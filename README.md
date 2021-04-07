@@ -1,2 +1,2 @@
 # bhackathon
-Hackathon project, still to be defined.
+Hackathon project BackEnd, still to be defined.
