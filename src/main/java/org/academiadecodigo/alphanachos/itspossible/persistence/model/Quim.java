@@ -2,6 +2,7 @@ package org.academiadecodigo.alphanachos.itspossible.persistence.model;
 
 import org.academiadecodigo.alphanachos.itspossible.exception.AlreadyHasMissionException;
 import org.academiadecodigo.alphanachos.itspossible.exception.NoMissionToExecuteException;
+import org.graalvm.compiler.nodes.memory.SingleMemoryKill;
 
 import javax.persistence.*;
 import java.util.*;
@@ -137,6 +138,13 @@ public class Quim {
 
     public String getName() {
         return name;
+    }
+
+    public void setSkills(Set<Skill> skills) {
+        this.skills = skills;
+    }
+    public void setMissionRequest(Mission missionRequest) {
+        this.missionRequest = missionRequest;
     }
 
 }
