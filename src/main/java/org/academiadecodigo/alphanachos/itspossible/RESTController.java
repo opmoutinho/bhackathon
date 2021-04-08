@@ -28,9 +28,14 @@ public class RESTController {
 
     private QuimServiceInterface quimService;
     private DtoToMission dtoToMission;
-    private MissionToDto missionToDto;
-    private DtoToQuim dtoToQuim;
-    private QuimToDto quimToDto;
+    //private MissionToDto missionToDto;
+    //private DtoToQuim dtoToQuim;
+    //private QuimToDto quimToDto;
+
+    @Autowired
+    public void setDtoToMission(DtoToMission dtoToMission){
+        this.dtoToMission = dtoToMission;
+    }
 
     @Autowired
     public void setQuimService(QuimServiceInterface quimService) {
