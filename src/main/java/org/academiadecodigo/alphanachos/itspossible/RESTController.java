@@ -1,6 +1,7 @@
 package org.academiadecodigo.alphanachos.itspossible;
 
 import org.academiadecodigo.alphanachos.itspossible.command.MissionDto;
+import org.academiadecodigo.alphanachos.itspossible.command.QuimDto;
 import org.academiadecodigo.alphanachos.itspossible.converters.DtoToMission;
 import org.academiadecodigo.alphanachos.itspossible.converters.DtoToQuim;
 import org.academiadecodigo.alphanachos.itspossible.converters.MissionToDto;
@@ -13,10 +14,7 @@ import org.academiadecodigo.alphanachos.itspossible.services.QuimServiceInterfac
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -27,13 +25,28 @@ public class RESTController {
 
     private QuimServiceInterface quimService;
     private DtoToMission dtoToMission;
-    //private MissionToDto missionToDto;
-    //private DtoToQuim dtoToQuim;
-    //private QuimToDto quimToDto;
+    private MissionToDto missionToDto;
+    private DtoToQuim dtoToQuim;
+    private QuimToDto quimToDto;
 
     @Autowired
     public void setDtoToMission(DtoToMission dtoToMission){
         this.dtoToMission = dtoToMission;
+    }
+
+    @Autowired
+    public void setMissionToDto(MissionToDto missionToDto){
+        this.missionToDto = missionToDto;
+    }
+
+    @Autowired
+    public void setDtoToQuim(DtoToQuim dtoToQuim){
+        this.dtoToQuim = dtoToQuim;
+    }
+
+    @Autowired
+    public void setQuimToDto(QuimToDto quimToDto){
+        this.quimToDto = quimToDto;
     }
 
     @Autowired
@@ -79,15 +92,15 @@ public class RESTController {
         return new ResponseEntity<>(HttpStatus.ACCEPTED);
     }
 
-    @RequestMapping(value = "api/customer/")
-    public ResponseEntity<List<Quim>> list(){
-        return new ResponseEntity<>(quimService.list(), HttpStatus.OK);
+    @RequestMapping(value = "api/customer")
+    public ResponseEntity<List<QuimDto>> list(){
+        return new ResponseEntity<>(quimToDto.convertList(quimService.list()), HttpStatus.OK);
     }
 
-    @RequestMapping(value = "api/customer/{id}")
-    public ResponseEntity<?> createRequest(@PathVariable Integer id, MissionDto dto){
-        quimService.createMission(dtoToMission.convert(dto), id);
-        return new ResponseEntity<>(quimService.getQuimByID(id).getRequestMission(), HttpStatus.OK);
+    @RequestMapping(method = RequestMethod.POST, value = "api/customer/{id}")
+    public ResponseEntity<?> createRequest(@PathVariable Integer id, MissionDto mission){
+        quimService.createMission(dtoToMission.convert(mission), id);
+        return new ResponseEntity<>(missionToDto.convert(quimService.getQuimByID(id).getRequestMission()), HttpStatus.ACCEPTED);
     }
 
 
