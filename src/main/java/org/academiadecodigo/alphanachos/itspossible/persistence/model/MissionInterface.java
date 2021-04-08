@@ -1,14 +1,13 @@
 package org.academiadecodigo.alphanachos.itspossible.persistence.model;
 
-import java.util.List;
 
 public interface MissionInterface {
 
-    void setOwner(Quim quim);
-    Quim getOwner();
+    void setOwner(QuimInterface quim);
+    QuimInterface getOwner();
 
-    void setHelper(Quim quim);
-    Quim getHelper();
+    void setHelper(QuimInterface quim);
+    QuimInterface getHelper();
 
     void setDescription(String description);
     String getDescription();
@@ -16,8 +15,8 @@ public interface MissionInterface {
     void setStatus(MissionStatus missionStatus);
     MissionStatus getStatus();
 
-    void addSkill(Skill skill);
-    List<Skill> getSkills();
+    void setSkill(Skill skill);
+    Skill getSkill();
 
     void setLocation(Location location);
     Location getLocation();
