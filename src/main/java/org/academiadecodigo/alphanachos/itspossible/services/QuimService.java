@@ -33,7 +33,6 @@ public class QuimService {
     }
 
     @Transactional
-    @Override
     public void createMission(Mission mission, Integer id) {
             Quim quim = quimDao.getById(id);
             if (quim == null){
@@ -44,7 +43,6 @@ public class QuimService {
     }
 
     @Transactional
-    @Override
     public void requestMission(Integer mid, Integer qid) {
             Quim quim = quimDao.getById(qid);
             if(quim == null){
@@ -63,7 +61,6 @@ public class QuimService {
     }
 
     @Transactional
-    @Override
     public void executeMission(Integer id) {
         Quim quim = quimDao.getById(id);
         if (quim == null){
@@ -74,28 +71,24 @@ public class QuimService {
     }
 
     @Transactional(readOnly = true)
-    @Override
     public List<Mission> listActiveMissions() {
 
         return missionDao.listAllActiveMissions();
     }
 
     @Transactional(readOnly = true)
-    @Override
     public List<Mission> listQuimHelpedMissions(Integer id) {
 
         return missionDao.listAllHelpedMissions(id);
     }
 
     @Transactional(readOnly = true)
-    @Override
     public List<Mission> listQuimRequestedMissions(Integer id) {
 
         return missionDao.listAllCreatedMissions(id);
     }
 
     @Transactional(readOnly = true)
-    @Override
     public List<Mission> listActiveMissionsByLocation(Location location) {
         return missionDao.listAllActiveMissionsByLocation(location);
     }
