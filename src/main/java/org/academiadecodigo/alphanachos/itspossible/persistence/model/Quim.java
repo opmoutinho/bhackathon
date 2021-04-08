@@ -3,22 +3,39 @@ package org.academiadecodigo.alphanachos.itspossible.persistence.model;
 import org.academiadecodigo.alphanachos.itspossible.exception.AlreadyHasMissionException;
 import org.academiadecodigo.alphanachos.itspossible.exception.NoMissionToExecuteException;
 
+import javax.persistence.*;
 import java.util.*;
 
-public class Quim implements QuimInterface{
+@Entity
+@Table("quim")
+public class Quim {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String email;
     private String phone;
     private String name;
     private String aboutMe;
     private Location location;
+
+    @ElementCollection(targetClass = Skill.class)
+    @Enumerated(EnumType.STRING)
+    @CollectionTable(name = "quim_skill",
+            joinColumns = @JoinColumn(name = "quim_id"))
     private Set<Skill> skills;
 
-    private MissionInterface missionToExecute;
-    private MissionInterface missionRequest;
-    private List<MissionInterface> executedMissionHistory;
-    private List<MissionInterface> requestedMissionHistory;
+    @OneToOne
+    private Mission missionToExecute;
+
+    @OneToOne
+    private Mission missionRequest;
+
+    @OneToMany
+    private List<Mission> executedMissionHistory;
+
+    @OneToMany
+    private List<Mission> requestedMissionHistory;
 
     public Quim(){
         executedMissionHistory = new LinkedList<>();
@@ -45,13 +62,13 @@ public class Quim implements QuimInterface{
         missionToExecute = null;
     }
 
-    @Override
-    public List<MissionInterface> getExecutedMissionHistory() {
+
+    public List<Mission> getExecutedMissionHistory() {
         return executedMissionHistory;
     }
 
-    @Override
-    public void setMissionToExecute(MissionInterface mission) throws AlreadyHasMissionException {
+
+    public void setMissionToExecute(Mission mission) throws AlreadyHasMissionException {
         if(missionToExecute != null){
             throw new AlreadyHasMissionException();
         }
@@ -60,13 +77,11 @@ public class Quim implements QuimInterface{
         missionToExecute.setStatus(MissionStatus.IN_PROGRESS);
     }
 
-    @Override
-    public MissionInterface getCurrentMission() {
+    public Mission getCurrentMission() {
         return missionToExecute;
     }
 
-    @Override
-    public void createRequestMission(MissionInterface mission) throws AlreadyHasMissionException {
+    public void createRequestMission(Mission mission) throws AlreadyHasMissionException {
         if(missionRequest != null)
             throw new AlreadyHasMissionException();
         missionRequest = mission;
@@ -75,12 +90,11 @@ public class Quim implements QuimInterface{
         mission.setOwner(this);
     }
 
-    @Override
-    public MissionInterface getRequestMission() {
+    public Mission getRequestMission() {
         return missionRequest;
     }
 
-    @Override
+
     public void completeMissionRequest() throws NoMissionToExecuteException {
         if (missionRequest == null)
             throw new NoMissionToExecuteException();
@@ -88,47 +102,47 @@ public class Quim implements QuimInterface{
         missionRequest = null;
     }
 
-    @Override
+
     public void addSkill(Skill skill) {
         skills.add(skill);
     }
 
-    @Override
+
     public void removeSkill(Skill skill) {
         skills.remove(skill);
     }
 
-    @Override
+
     public Set<Skill> getSkills() {
         return skills;
     }
 
-    @Override
+
     public void setAboutMe(String aboutMe) {
         this.aboutMe = aboutMe;
     }
 
-    @Override
+
     public String getAboutMe() {
         return aboutMe;
     }
 
-    @Override
+
     public void setLocation(Location location) {
         this.location = location;
     }
 
-    @Override
+
     public Location getLocation() {
         return location;
     }
 
-    @Override
+
     public void setName(String name) {
         this.name = name;
     }
 
-    @Override
+
     public String getName() {
         return name;
     }

@@ -1,71 +1,80 @@
 package org.academiadecodigo.alphanachos.itspossible.persistence.model;
 
-public class Mission implements MissionInterface {
+import javax.persistence.*;
 
+@Entity
+@Table("mission")
+public class Mission {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private QuimInterface owner;
-    private QuimInterface helper;
+
+    @OneToOne
+    private Quim owner;
+
+    @OneToOne
+    private Quim helper;
     private String description;
     private MissionStatus status;
     private Skill skill;
     private Location location;
 
-    @Override
-    public void setOwner(QuimInterface quim) {
+
+    public void setOwner(Quim quim) {
         owner = quim;
     }
 
-    @Override
-    public QuimInterface getOwner() {
+
+    public Quim getOwner() {
         return owner;
     }
 
-    @Override
-    public void setHelper(QuimInterface quim) {
+
+    public void setHelper(Quim quim) {
         helper = quim;
     }
 
-    @Override
-    public QuimInterface getHelper() {
+
+    public Quim getHelper() {
         return helper;
     }
 
-    @Override
+
     public void setDescription(String description) {
         this.description = description;
     }
 
-    @Override
     public String getDescription() {
         return description;
     }
 
-    @Override
+
     public void setStatus(MissionStatus missionStatus) {
         status = missionStatus;
     }
 
-    @Override
+
     public MissionStatus getStatus() {
         return status;
     }
 
-    @Override
+
     public void setSkill(Skill skill) {
         this.skill = skill;
     }
 
-    @Override
+
     public Skill getSkill() {
         return skill;
     }
 
-    @Override
+
     public void setLocation(Location location) {
         this.location = location;
     }
 
-    @Override
+
     public Location getLocation() {
         return location;
     }

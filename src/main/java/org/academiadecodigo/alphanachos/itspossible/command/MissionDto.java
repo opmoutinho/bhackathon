@@ -1,15 +1,16 @@
 package org.academiadecodigo.alphanachos.itspossible.command;
 
+import org.academiadecodigo.alphanachos.itspossible.converters.QuimToDto;
 import org.academiadecodigo.alphanachos.itspossible.persistence.model.Location;
 import org.academiadecodigo.alphanachos.itspossible.persistence.model.MissionStatus;
-import org.academiadecodigo.alphanachos.itspossible.persistence.model.QuimInterface;
+import org.academiadecodigo.alphanachos.itspossible.persistence.model.Quim;
 import org.academiadecodigo.alphanachos.itspossible.persistence.model.Skill;
 
 public class MissionDto {
 
     private Integer id;
-    private QuimInterface owner;
-    private QuimInterface helper;
+    private QuimDto owner;
+    private QuimDto helper;
     private String description;
     private MissionStatus status;
     private Skill skill;
@@ -23,19 +24,19 @@ public class MissionDto {
         this.id = id;
     }
 
-    public QuimInterface getOwner() {
+    public QuimDto getOwner() {
         return owner;
     }
 
-    public void setOwner(QuimInterface owner) {
+    public void setOwner(QuimDto owner) {
         this.owner = owner;
     }
 
-    public QuimInterface getHelper() {
+    public QuimDto getHelper() {
         return helper;
     }
 
-    public void setHelper(QuimInterface helper) {
+    public void setHelper(QuimDto helper) {
         this.helper = helper;
     }
 
