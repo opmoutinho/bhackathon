@@ -24,4 +24,8 @@ public interface QuimServiceInterface {
 
    List <Mission> listActiveMissionsByLocation(Location location);
 
+   List<Quim> list();
+
+    public Quim getQuimByID (Integer id);
+
 }

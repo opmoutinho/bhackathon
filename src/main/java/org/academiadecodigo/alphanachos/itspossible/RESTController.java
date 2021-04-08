@@ -2,6 +2,7 @@ package org.academiadecodigo.alphanachos.itspossible;
 
 import org.academiadecodigo.alphanachos.itspossible.persistence.model.Quim;
 import org.academiadecodigo.alphanachos.itspossible.services.QuimService;
+import org.academiadecodigo.alphanachos.itspossible.services.QuimServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,7 +17,7 @@ import java.util.List;
 @RequestMapping("/api/customer")
 public class RESTController {
 
-    QuimService quimService;
+    private QuimServiceInterface quimService;
 
     @Autowired
     public void setQuimService(QuimService quimService) {
