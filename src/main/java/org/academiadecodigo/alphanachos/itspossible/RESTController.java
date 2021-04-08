@@ -93,8 +93,8 @@ public class RESTController {
     }
 
     @RequestMapping(value = "api/customer")
-    public ResponseEntity<List<QuimDto>> list(){
-        return new ResponseEntity<>(quimToDto.convertList(quimService.list()), HttpStatus.OK);
+    public ResponseEntity<List<Quim>> list(){
+        return new ResponseEntity<>(quimService.list(), HttpStatus.OK);
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "api/customer/{id}")
