@@ -2,12 +2,16 @@ package org.academiadecodigo.alphanachos.itspossible.persistence.dao;
 
 import org.academiadecodigo.alphanachos.itspossible.persistence.model.Location;
 import org.academiadecodigo.alphanachos.itspossible.persistence.model.Mission;
+import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.util.List;
 
+@Repository
 public class MissionDao {
 
+    @PersistenceContext
     private EntityManager em;
 
     public void setEm(EntityManager em) {

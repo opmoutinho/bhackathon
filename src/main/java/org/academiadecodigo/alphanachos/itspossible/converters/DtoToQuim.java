@@ -3,7 +3,9 @@ package org.academiadecodigo.alphanachos.itspossible.converters;
 import org.academiadecodigo.alphanachos.itspossible.command.QuimDto;
 import org.academiadecodigo.alphanachos.itspossible.persistence.model.Quim;
 import org.academiadecodigo.alphanachos.itspossible.services.QuimService;
+import org.springframework.stereotype.Component;
 
+@Component
 public class DtoToQuim {
 
     private QuimService quimService;

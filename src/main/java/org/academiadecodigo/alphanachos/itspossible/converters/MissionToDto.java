@@ -2,14 +2,18 @@ package org.academiadecodigo.alphanachos.itspossible.converters;
 
 import org.academiadecodigo.alphanachos.itspossible.command.MissionDto;
 import org.academiadecodigo.alphanachos.itspossible.persistence.model.Mission;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Component
 public class MissionToDto {
 
     public QuimToDto quimToDto;
 
+    @Autowired
     public void setQuimToDto(QuimToDto quimToDto) {
         this.quimToDto = quimToDto;
     }
