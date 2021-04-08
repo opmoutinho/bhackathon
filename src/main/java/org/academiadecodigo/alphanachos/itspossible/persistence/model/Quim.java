@@ -8,14 +8,17 @@ import java.util.*;
 public class Quim implements QuimInterface{
 
     private Integer id;
+    private String email;
+    private String phone;
+    private String name;
+    private String aboutMe;
+    private Location location;
+    private Set<Skill> skills;
+
     private MissionInterface missionToExecute;
     private MissionInterface missionRequest;
     private List<MissionInterface> executedMissionHistory;
     private List<MissionInterface> requestedMissionHistory;
-    private String name;
-    private Location location;
-    private String aboutMe;
-    private Set<Skill> skills;
 
     public Quim(){
         executedMissionHistory = new LinkedList<>();
@@ -77,7 +80,7 @@ public class Quim implements QuimInterface{
     }
 
     public void completeMissionRequest() throws NoMissionToExecuteException {
-        if(missionRequest == null)
+        if (missionRequest == null)
             throw new NoMissionToExecuteException();
         requestedMissionHistory.add(missionRequest);
         missionRequest = null;
