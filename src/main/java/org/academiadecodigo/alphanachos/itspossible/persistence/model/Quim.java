@@ -18,8 +18,76 @@ public class Quim {
     private String name;
     private String aboutMe;
 
+
+    @ElementCollection(targetClass = Skill.class)
+    @Enumerated(EnumType.STRING)
+    @CollectionTable(name = "quim_skill",
+            joinColumns = @JoinColumn(name = "quim_id"))
+    private Set<Skill> skills;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    private Mission missionToExecute;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    private Mission missionRequest;
+    public Quim() {
+        skills = new LinkedHashSet<>();
+    }
+
+    public void executeMission() throws NoMissionToExecuteException {
+        if (missionToExecute == null) {
+            throw new NoMissionToExecuteException();
+        }
+        missionToExecute.setStatus(MissionStatus.COMPLETED);
+        missionToExecute.getOwner().completeMissionRequest();
+        missionToExecute = null;
+    }
+
+
+    public void setMissionToExecute(Mission mission) throws AlreadyHasMissionException {
+        if (missionToExecute != null) {
+            throw new AlreadyHasMissionException();
+        }
+        missionToExecute = mission;
+        missionToExecute.setHelper(this);
+        missionToExecute.setStatus(MissionStatus.IN_PROGRESS);
+    }
+
+    public void createRequestMission(Mission mission) throws AlreadyHasMissionException {
+        if (missionRequest != null)
+            throw new AlreadyHasMissionException();
+        missionRequest = mission;
+        mission.setStatus(MissionStatus.OPEN);
+        mission.setLocation(location);
+        mission.setOwner(this);
+    }
+
+
+    public void completeMissionRequest() throws NoMissionToExecuteException {
+        if (missionRequest == null)
+            throw new NoMissionToExecuteException();
+        missionRequest = null;
+    }
+
+
+    public Mission getCurrentMission() {
+        return missionToExecute;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
     public String getEmail() {
         return email;
+    }
+
+    public Mission getRequestMission() {
+        return missionRequest;
     }
 
     public void setEmail(String email) {
@@ -36,115 +104,40 @@ public class Quim {
 
     private Location location;
 
-    @ElementCollection(targetClass = Skill.class)
-    @Enumerated(EnumType.STRING)
-    @CollectionTable(name = "quim_skill",
-            joinColumns = @JoinColumn(name = "quim_id"))
-    private Set<Skill> skills;
-
-    @OneToOne(cascade = CascadeType.ALL)
-    private Mission missionToExecute;
-
-    @OneToOne(cascade = CascadeType.ALL)
-    private Mission missionRequest;
-
-    public Quim(){
-        skills = new LinkedHashSet<>();
-    }
-
-    public void setId(Integer id){
-        this.id = id;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void executeMission() throws NoMissionToExecuteException{
-        if(missionToExecute == null){
-            throw new NoMissionToExecuteException();
-        }
-        missionToExecute.setStatus(MissionStatus.COMPLETED);
-        missionToExecute.getOwner().completeMissionRequest();
-        missionToExecute = null;
-    }
-
-
-    public void setMissionToExecute(Mission mission) throws AlreadyHasMissionException {
-        if(missionToExecute != null){
-            throw new AlreadyHasMissionException();
-        }
-        missionToExecute = mission;
-        missionToExecute.setHelper(this);
-        missionToExecute.setStatus(MissionStatus.IN_PROGRESS);
-    }
-
-    public Mission getCurrentMission() {
-        return missionToExecute;
-    }
-
-    public void createRequestMission(Mission mission) throws AlreadyHasMissionException {
-        if(missionRequest != null)
-            throw new AlreadyHasMissionException();
-        missionRequest = mission;
-        mission.setStatus(MissionStatus.OPEN);
-        mission.setLocation(location);
-        mission.setOwner(this);
-    }
-
-    public Mission getRequestMission() {
-        return missionRequest;
-    }
-
-
-    public void completeMissionRequest() throws NoMissionToExecuteException {
-        if (missionRequest == null)
-            throw new NoMissionToExecuteException();
-        missionRequest = null;
-    }
-
-
     public void addSkill(Skill skill) {
         skills.add(skill);
     }
-
 
     public void removeSkill(Skill skill) {
         skills.remove(skill);
     }
 
-
     public Set<Skill> getSkills() {
         return skills;
     }
-
 
     public void setAboutMe(String aboutMe) {
         this.aboutMe = aboutMe;
     }
 
-
     public String getAboutMe() {
         return aboutMe;
     }
-
 
     public void setLocation(Location location) {
         this.location = location;
     }
 
-
     public Location getLocation() {
         return location;
     }
-
 
     public void setName(String name) {
         this.name = name;
     }
 
-
     public String getName() {
         return name;
     }
+
 }

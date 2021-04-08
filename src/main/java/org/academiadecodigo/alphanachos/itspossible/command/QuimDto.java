@@ -14,6 +14,8 @@ public class QuimDto {
     private String aboutMe;
     private Location location;
     private Set<Skill> skills;
+    private MissionDto missionToExecute;
+    private MissionDto missionRequest;
 
     public Integer getId() {
         return id;
@@ -69,5 +71,21 @@ public class QuimDto {
 
     public void setSkills(Set<Skill> skills) {
         this.skills = skills;
+    }
+
+    public MissionDto getMissionToExecute() {
+        return missionToExecute;
+    }
+
+    public void setMissionToExecute(MissionDto missionToExecute) {
+        this.missionToExecute = missionToExecute;
+    }
+
+    public MissionDto getMissionRequest() {
+        return missionRequest;
+    }
+
+    public void setMissionRequest(MissionDto missionDto) {
+        this.missionRequest = missionDto;
     }
 }

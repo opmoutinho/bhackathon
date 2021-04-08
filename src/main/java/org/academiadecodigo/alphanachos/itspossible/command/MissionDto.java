@@ -1,9 +1,7 @@
 package org.academiadecodigo.alphanachos.itspossible.command;
 
-import org.academiadecodigo.alphanachos.itspossible.converters.QuimToDto;
 import org.academiadecodigo.alphanachos.itspossible.persistence.model.Location;
 import org.academiadecodigo.alphanachos.itspossible.persistence.model.MissionStatus;
-import org.academiadecodigo.alphanachos.itspossible.persistence.model.Quim;
 import org.academiadecodigo.alphanachos.itspossible.persistence.model.Skill;
 
 public class MissionDto {

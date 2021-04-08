@@ -24,21 +24,17 @@ public class Mission {
         owner = quim;
     }
 
-
     public Quim getOwner() {
         return owner;
     }
-
 
     public void setHelper(Quim quim) {
         helper = quim;
     }
 
-
     public Quim getHelper() {
         return helper;
     }
-
 
     public void setDescription(String description) {
         this.description = description;
@@ -48,33 +44,31 @@ public class Mission {
         return description;
     }
 
-
     public void setStatus(MissionStatus missionStatus) {
         status = missionStatus;
     }
-
 
     public MissionStatus getStatus() {
         return status;
     }
 
-
     public void setSkill(Skill skill) {
         this.skill = skill;
     }
-
 
     public Skill getSkill() {
         return skill;
     }
 
-
     public void setLocation(Location location) {
         this.location = location;
     }
 
-
     public Location getLocation() {
         return location;
+    }
+
+    public Integer getId() {
+        return id;
     }
 }
