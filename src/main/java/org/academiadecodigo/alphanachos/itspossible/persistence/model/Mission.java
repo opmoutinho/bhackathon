@@ -1,6 +1,7 @@
 package org.academiadecodigo.alphanachos.itspossible.persistence.model;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 public class Mission {
@@ -19,6 +20,7 @@ public class Mission {
     private MissionStatus status;
     private Skill skill;
     private Location location;
+    private Date date;
 
 
     public void setOwner(Quim quim) {
@@ -71,5 +73,13 @@ public class Mission {
 
     public Integer getId() {
         return id;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public Date getDate() {
+        return date;
     }
 }

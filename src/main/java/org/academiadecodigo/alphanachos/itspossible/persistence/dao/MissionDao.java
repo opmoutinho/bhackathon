@@ -1,5 +1,6 @@
 package org.academiadecodigo.alphanachos.itspossible.persistence.dao;
 
+import org.academiadecodigo.alphanachos.itspossible.persistence.model.Location;
 import org.academiadecodigo.alphanachos.itspossible.persistence.model.Mission;
 
 import javax.persistence.EntityManager;
@@ -29,6 +30,10 @@ public class MissionDao {
 
     public List<Mission> listAllCreatedMissions(Integer id){
         return em.createQuery("SELECT m FROM Mission m WHERE m.owner.id="+id,Mission.class).getResultList();
+    }
+
+    public List<Mission> listAllActiveMissionsByLocation(Location location){
+        return em.createQuery("SELECT m FROM Mission m WHERE m.location="+location,Mission.class).getResultList();
     }
 
     public void delete(Integer id){

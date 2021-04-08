@@ -34,9 +34,9 @@ public class Quim {
         skills = new LinkedHashSet<>();
     }
 
-    public void executeMission() throws NoMissionToExecuteException {
+    public void executeMission(){
         if (missionToExecute == null) {
-            throw new NoMissionToExecuteException();
+            return;
         }
         missionToExecute.setStatus(MissionStatus.COMPLETED);
         missionToExecute.getOwner().completeMissionRequest();
@@ -44,28 +44,29 @@ public class Quim {
     }
 
 
-    public void setMissionToExecute(Mission mission) throws AlreadyHasMissionException {
+    public void setMissionToExecute(Mission mission){
         if (missionToExecute != null) {
-            throw new AlreadyHasMissionException();
+            return;
         }
         missionToExecute = mission;
         missionToExecute.setHelper(this);
         missionToExecute.setStatus(MissionStatus.IN_PROGRESS);
     }
 
-    public void createRequestMission(Mission mission) throws AlreadyHasMissionException {
+    public void createRequestMission(Mission mission){
         if (missionRequest != null)
-            throw new AlreadyHasMissionException();
+            return;
         missionRequest = mission;
         mission.setStatus(MissionStatus.OPEN);
         mission.setLocation(location);
         mission.setOwner(this);
+        mission.setDate(new Date());
     }
 
 
-    public void completeMissionRequest() throws NoMissionToExecuteException {
+    public void completeMissionRequest() {
         if (missionRequest == null)
-            throw new NoMissionToExecuteException();
+            return;
         missionRequest = null;
     }
 
