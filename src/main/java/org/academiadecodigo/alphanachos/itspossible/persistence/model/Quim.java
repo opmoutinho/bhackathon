@@ -19,7 +19,7 @@ public class Quim {
     private String aboutMe;
 
 
-    @ElementCollection(targetClass = Skill.class)
+    @ElementCollection(targetClass = Skill.class, fetch = FetchType.EAGER)
     @Enumerated(EnumType.STRING)
     @CollectionTable(name = "quim_skill",
             joinColumns = @JoinColumn(name = "quim_id"))
