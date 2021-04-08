@@ -12,7 +12,7 @@ public class DtoToQuim {
         this.quimService = quimService;
     }
 
-    public Quim convert(QuimDto quimDto) {
+    /*public Quim convert(QuimDto quimDto) {
 
         Quim quim = quimDto.getId() != null ?
                         quimService.get(quimDto.getId()) :
@@ -26,6 +26,6 @@ public class DtoToQuim {
         quim.setSkills(quimDto.getSkills());
 
         return quim;
-    }
+    }*/
 
 }

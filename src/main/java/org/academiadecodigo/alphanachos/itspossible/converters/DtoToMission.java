@@ -12,7 +12,7 @@ public class DtoToMission {
         this.quimService = quimService;
     }
 
-    public Mission convert(MissionDto missionDto) {
+    /*public Mission convert(MissionDto missionDto) {
 
         Mission mission = new Mission();
 
@@ -27,6 +27,6 @@ public class DtoToMission {
 
         return mission;
 
-    }
+    }*/
 
 }

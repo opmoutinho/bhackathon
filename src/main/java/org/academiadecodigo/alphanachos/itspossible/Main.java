@@ -49,20 +49,24 @@ public class Main {
         mission.setSkill(Skill.ERRANDS);
         quim1.createRequestMission(mission);
 
-
         em.getTransaction().begin();
         quim = quimDao.saveOrUpdate(quim);
         quim1 = quimDao.saveOrUpdate(quim1);
         quim2 = quimDao.saveOrUpdate(quim2);
         em.getTransaction().commit();
 
+        mission = missionDao.getById(quim1.getRequestMission().getId());
         quim2.setMissionToExecute(mission);
 
         em.getTransaction().begin();
-        quimDao.saveOrUpdate(quim2);
+        quim2 = quimDao.saveOrUpdate(quim2);
         em.getTransaction().commit();
 
+        quim2.executeMission();
 
+        em.getTransaction().begin();
+        quim2 = quimDao.saveOrUpdate(quim2);
+        em.getTransaction().commit();
 
         System.out.println("Executing mission!!");
 

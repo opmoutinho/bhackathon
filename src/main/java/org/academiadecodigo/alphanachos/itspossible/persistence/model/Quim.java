@@ -2,8 +2,6 @@ package org.academiadecodigo.alphanachos.itspossible.persistence.model;
 
 import org.academiadecodigo.alphanachos.itspossible.exception.AlreadyHasMissionException;
 import org.academiadecodigo.alphanachos.itspossible.exception.NoMissionToExecuteException;
-import org.graalvm.compiler.nodes.memory.SingleMemoryKill;
-
 import javax.persistence.*;
 import java.util.*;
 
@@ -27,9 +25,11 @@ public class Quim {
             joinColumns = @JoinColumn(name = "quim_id"))
     private Set<Skill> skills;
 
-    private Integer missionToExecute;
+    @OneToOne(cascade = CascadeType.ALL)
+    private Mission missionToExecute;
 
-    private Integer missionRequest;
+    @OneToOne(cascade = CascadeType.ALL)
+    private Mission missionRequest;
     public Quim() {
         skills = new LinkedHashSet<>();
     }
