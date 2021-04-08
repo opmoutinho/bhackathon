@@ -3,7 +3,6 @@ package org.academiadecodigo.alphanachos.itspossible.persistence.model;
 import javax.persistence.*;
 
 @Entity
-@Table("mission")
 public class Mission {
 
     @Id

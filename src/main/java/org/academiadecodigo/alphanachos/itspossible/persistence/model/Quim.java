@@ -2,12 +2,12 @@ package org.academiadecodigo.alphanachos.itspossible.persistence.model;
 
 import org.academiadecodigo.alphanachos.itspossible.exception.AlreadyHasMissionException;
 import org.academiadecodigo.alphanachos.itspossible.exception.NoMissionToExecuteException;
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.util.*;
 
 @Entity
-@Table("quim")
 public class Quim {
 
     @Id
@@ -17,6 +17,23 @@ public class Quim {
     private String phone;
     private String name;
     private String aboutMe;
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
     private Location location;
 
     @ElementCollection(targetClass = Skill.class)
@@ -25,21 +42,13 @@ public class Quim {
             joinColumns = @JoinColumn(name = "quim_id"))
     private Set<Skill> skills;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Mission missionToExecute;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Mission missionRequest;
 
-    @OneToMany
-    private List<Mission> executedMissionHistory;
-
-    @OneToMany
-    private List<Mission> requestedMissionHistory;
-
     public Quim(){
-        executedMissionHistory = new LinkedList<>();
-        requestedMissionHistory = new LinkedList<>();
         skills = new LinkedHashSet<>();
     }
 
@@ -51,20 +60,13 @@ public class Quim {
         return id;
     }
 
-    @Override
     public void executeMission() throws NoMissionToExecuteException{
         if(missionToExecute == null){
             throw new NoMissionToExecuteException();
         }
         missionToExecute.setStatus(MissionStatus.COMPLETED);
         missionToExecute.getOwner().completeMissionRequest();
-        executedMissionHistory.add(missionToExecute);
         missionToExecute = null;
-    }
-
-
-    public List<Mission> getExecutedMissionHistory() {
-        return executedMissionHistory;
     }
 
 
@@ -98,7 +100,6 @@ public class Quim {
     public void completeMissionRequest() throws NoMissionToExecuteException {
         if (missionRequest == null)
             throw new NoMissionToExecuteException();
-        requestedMissionHistory.add(missionRequest);
         missionRequest = null;
     }
 
