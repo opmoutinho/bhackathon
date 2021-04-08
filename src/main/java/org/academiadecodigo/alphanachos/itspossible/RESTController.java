@@ -14,7 +14,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "*", maxAge = 3600)
-@RequestMapping("/api/customer")
+@RequestMapping("/")
 public class RESTController {
 
     private QuimServiceInterface quimService;

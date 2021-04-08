@@ -10,7 +10,7 @@ import javax.persistence.criteria.Root;
 import java.util.List;
 
 @Repository
-public class QuimDao {
+public class QuimDao implements QuimDaoInterface {
 
     @PersistenceContext
     private EntityManager em;

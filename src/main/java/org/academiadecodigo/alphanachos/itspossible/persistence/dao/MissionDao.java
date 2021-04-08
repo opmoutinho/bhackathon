@@ -9,7 +9,7 @@ import javax.persistence.PersistenceContext;
 import java.util.List;
 
 @Repository
-public class MissionDao {
+public class MissionDao implements MissionDaoInterface{
 
     @PersistenceContext
     private EntityManager em;
