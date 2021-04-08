@@ -39,8 +39,8 @@ public class QuimToDto {
         quimDto.setLocation(quim.getLocation());
         quimDto.setSkills(quim.getSkills());
 
-
-
+        quimDto.setMissionToExecute(quim.getCurrentMission() != null ? quim.getCurrentMission().getId() : null);
+        quimDto.setMissionRequest(quim.getRequestMission() != null ? quim.getRequestMission().getId() : null);
         return quimDto;
     }
 
