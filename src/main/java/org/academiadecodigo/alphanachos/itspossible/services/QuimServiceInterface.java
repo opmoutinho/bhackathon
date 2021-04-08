@@ -28,4 +28,6 @@ public interface QuimServiceInterface {
 
     public Quim getQuimByID (Integer id);
 
+    Quim saveOrUpdate(Quim toSave);
+
 }

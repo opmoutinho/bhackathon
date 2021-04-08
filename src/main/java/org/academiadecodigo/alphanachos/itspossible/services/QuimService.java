@@ -107,4 +107,11 @@ public class QuimService implements QuimServiceInterface{
     public Quim getQuimByID (Integer id){
         return quimDao.getById(id);
     }
+
+    @Transactional
+    @Override
+    public Quim saveOrUpdate(Quim toSave) {
+
+        return quimDao.saveOrUpdate(toSave);
+    }
 }
