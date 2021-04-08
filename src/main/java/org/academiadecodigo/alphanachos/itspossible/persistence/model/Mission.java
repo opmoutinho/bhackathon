@@ -9,11 +9,6 @@ public class Mission {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @OneToOne
-    private Quim owner;
-
-    @OneToOne
-    private Quim helper;
     private String description;
     private MissionStatus status;
     private Skill skill;

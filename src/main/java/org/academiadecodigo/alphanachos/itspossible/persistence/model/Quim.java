@@ -26,11 +26,9 @@ public class Quim {
             joinColumns = @JoinColumn(name = "quim_id"))
     private Set<Skill> skills;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    private Mission missionToExecute;
+    private Integer missionToExecute;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    private Mission missionRequest;
+    private Integer missionRequest;
     public Quim() {
         skills = new LinkedHashSet<>();
     }
