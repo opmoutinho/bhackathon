@@ -42,6 +42,7 @@ public class Quim implements QuimInterface{
         missionToExecute.setStatus(MissionStatus.COMPLETED);
         missionToExecute.getOwner().completeMissionRequest();
         executedMissionHistory.add(missionToExecute);
+        missionToExecute = null;
     }
 
     @Override
@@ -79,6 +80,7 @@ public class Quim implements QuimInterface{
         return missionRequest;
     }
 
+    @Override
     public void completeMissionRequest() throws NoMissionToExecuteException {
         if (missionRequest == null)
             throw new NoMissionToExecuteException();
