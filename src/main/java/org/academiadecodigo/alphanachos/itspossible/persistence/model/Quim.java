@@ -2,7 +2,6 @@ package org.academiadecodigo.alphanachos.itspossible.persistence.model;
 
 import org.academiadecodigo.alphanachos.itspossible.exception.AlreadyHasMissionException;
 import org.academiadecodigo.alphanachos.itspossible.exception.NoMissionToExecuteException;
-import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.util.*;
@@ -16,6 +15,8 @@ public class Quim {
     private String email;
     private String phone;
     private String name;
+
+    @Column(length = 500)
     private String aboutMe;
 
 
