@@ -20,7 +20,7 @@ public class RESTController {
     private QuimServiceInterface quimService;
 
     @Autowired
-    public void setQuimService(QuimService quimService) {
+    public void setQuimService(QuimServiceInterface quimService) {
         this.quimService = quimService;
     }
 
