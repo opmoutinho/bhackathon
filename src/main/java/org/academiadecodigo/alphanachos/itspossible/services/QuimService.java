@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
-public class QuimService implements QuimServiceInterface{
+public class QuimService {
 
     private MissionDao missionDao;
     private QuimDao quimDao;
