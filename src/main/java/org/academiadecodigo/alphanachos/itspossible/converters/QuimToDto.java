@@ -1,7 +1,10 @@
 package org.academiadecodigo.alphanachos.itspossible.converters;
 
 import org.academiadecodigo.alphanachos.itspossible.command.QuimDto;
+import org.academiadecodigo.alphanachos.itspossible.persistence.dao.QuimDao;
+import org.academiadecodigo.alphanachos.itspossible.persistence.dao.QuimDaoInterface;
 import org.academiadecodigo.alphanachos.itspossible.persistence.model.Quim;
+import org.academiadecodigo.alphanachos.itspossible.services.QuimServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -12,12 +15,17 @@ import java.util.stream.Collectors;
 public class QuimToDto {
 
     private MissionToDto missionToDto;
+    private QuimServiceInterface service;
 
     @Autowired
     public void setMissionToDto(MissionToDto missionToDto) {
         this.missionToDto = missionToDto;
     }
 
+    @Autowired
+    public void setService(QuimServiceInterface service) {
+        this.service = service;
+    }
 
     public QuimDto convert(Quim quim) {
 
@@ -31,8 +39,7 @@ public class QuimToDto {
         quimDto.setLocation(quim.getLocation());
         quimDto.setSkills(quim.getSkills());
 
-        quimDto.setMissionRequest(missionToDto.convertSimple(quim.getRequestMission()));
-        quimDto.setMissionToExecute(missionToDto.convertSimple(quim.getCurrentMission()));
+
 
         return quimDto;
     }

@@ -94,6 +94,7 @@ public class RESTController {
 
     @RequestMapping(value = "api/customer")
     public ResponseEntity<List<Quim>> list(){
+
         return new ResponseEntity<>(quimService.list(), HttpStatus.OK);
     }
 

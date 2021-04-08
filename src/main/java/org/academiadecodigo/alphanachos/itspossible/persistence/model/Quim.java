@@ -25,10 +25,10 @@ public class Quim {
             joinColumns = @JoinColumn(name = "quim_id"))
     private Set<Skill> skills;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Mission missionToExecute;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Mission missionRequest;
     public Quim() {
         skills = new LinkedHashSet<>();

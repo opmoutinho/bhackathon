@@ -10,10 +10,10 @@ public class Mission {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @OneToOne()
+    @OneToOne(fetch = FetchType.LAZY)
     private Quim owner;
 
-    @OneToOne()
+    @OneToOne(fetch = FetchType.LAZY)
     private Quim helper;
 
     private String description;

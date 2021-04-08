@@ -27,8 +27,12 @@ public interface QuimServiceInterface {
 
    List<Quim> list();
 
-    public Quim getQuimByID (Integer id);
+    Quim getQuimByID (Integer id);
 
     Quim saveOrUpdate(Quim toSave);
+
+    Mission getQuimCurrentMission(Integer id);
+
+    Mission getQuimRequestMission(Integer id);
 
 }

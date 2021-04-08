@@ -115,4 +115,16 @@ public class QuimService implements QuimServiceInterface{
 
         return quimDao.saveOrUpdate(toSave);
     }
+
+    @Override
+    public Mission getQuimCurrentMission(Integer id) {
+        Quim quim = quimDao.getById(id);
+        return quim.getCurrentMission();
+    }
+
+    @Override
+    public Mission getQuimRequestMission(Integer id) {
+        Quim quim = quimDao.getById(id);
+        return quim.getRequestMission();
+    }
 }
