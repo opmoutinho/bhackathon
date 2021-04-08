@@ -28,6 +28,10 @@ public class QuimService implements QuimServiceInterface{
         this.quimDao = quimDao;
     }
 
+    public List<Quim> list(){
+        return quimDao.listAll();
+    }
+
     @Transactional
     @Override
     public void createMission(Mission mission, Integer id) {
@@ -39,6 +43,7 @@ public class QuimService implements QuimServiceInterface{
             quimDao.saveOrUpdate(quim);
     }
 
+    @Transactional
     @Override
     public void requestMission(Integer mid, Integer qid) {
             Quim quim = quimDao.getById(qid);
@@ -57,6 +62,7 @@ public class QuimService implements QuimServiceInterface{
             missionDao.saveOrUpdate(mission);
     }
 
+    @Transactional
     @Override
     public void executeMission(Integer id) {
         Quim quim = quimDao.getById(id);
@@ -67,29 +73,34 @@ public class QuimService implements QuimServiceInterface{
         quimDao.saveOrUpdate(quim);
     }
 
+    @Transactional(readOnly = true)
     @Override
     public List<Mission> listActiveMissions() {
 
         return missionDao.listAllActiveMissions();
     }
 
+    @Transactional(readOnly = true)
     @Override
     public List<Mission> listQuimHelpedMissions(Integer id) {
 
         return missionDao.listAllHelpedMissions(id);
     }
 
+    @Transactional(readOnly = true)
     @Override
     public List<Mission> listQuimRequestedMissions(Integer id) {
 
         return missionDao.listAllCreatedMissions(id);
     }
 
+    @Transactional(readOnly = true)
     @Override
     public List<Mission> listActiveMissionsByLocation(Location location) {
         return missionDao.listAllActiveMissionsByLocation(location);
     }
 
+    @Transactional(readOnly = true)
     public Quim getQuimByID (Integer id){
         return quimDao.getById(id);
     }
