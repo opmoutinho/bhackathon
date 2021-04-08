@@ -14,10 +14,10 @@ public class DtoToQuim {
         this.quimService = quimService;
     }
 
-    /*public Quim convert(QuimDto quimDto) {
+    public Quim convert(QuimDto quimDto) {
 
         Quim quim = quimDto.getId() != null ?
-                        quimService.get(quimDto.getId()) :
+                        quimService.getQuimByID(quimDto.getId()) :
                         new Quim();
 
         quim.setEmail(quimDto.getEmail());
@@ -28,6 +28,6 @@ public class DtoToQuim {
         quim.setSkills(quimDto.getSkills());
 
         return quim;
-    }*/
+    }
 
 }

@@ -28,7 +28,7 @@ public class MissionToDto {
         missionDto.setSkill(mission.getSkill());
         missionDto.setLocation(mission.getLocation());
         missionDto.setOwner(quimToDto.convertSimple(mission.getOwner()));
-        missionDto.setHelper(quimToDto.convertSimple(mission.getHelper()));
+        missionDto.setHelper(mission.getHelper() != null ? quimToDto.convertSimple(mission.getHelper()) : null);
 
         return missionDto;
     }

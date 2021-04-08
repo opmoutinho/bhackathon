@@ -1,5 +1,10 @@
 package org.academiadecodigo.alphanachos.itspossible;
 
+import org.academiadecodigo.alphanachos.itspossible.command.MissionDto;
+import org.academiadecodigo.alphanachos.itspossible.converters.DtoToMission;
+import org.academiadecodigo.alphanachos.itspossible.converters.DtoToQuim;
+import org.academiadecodigo.alphanachos.itspossible.converters.MissionToDto;
+import org.academiadecodigo.alphanachos.itspossible.converters.QuimToDto;
 import org.academiadecodigo.alphanachos.itspossible.persistence.model.Location;
 import org.academiadecodigo.alphanachos.itspossible.persistence.model.Mission;
 import org.academiadecodigo.alphanachos.itspossible.persistence.model.Quim;
@@ -10,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -21,6 +27,10 @@ import java.util.List;
 public class RESTController {
 
     private QuimServiceInterface quimService;
+    private DtoToMission dtoToMission;
+    private MissionToDto missionToDto;
+    private DtoToQuim dtoToQuim;
+    private QuimToDto quimToDto;
 
     @Autowired
     public void setQuimService(QuimServiceInterface quimService) {
@@ -68,6 +78,12 @@ public class RESTController {
     @RequestMapping(value = "api/customer/")
     public ResponseEntity<List<Quim>> list(){
         return new ResponseEntity<>(quimService.list(), HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "api/customer/{id}")
+    public ResponseEntity<?> createRequest(@PathVariable Integer id, MissionDto dto){
+        quimService.createMission(dtoToMission.convert(dto), id);
+        return new ResponseEntity<>(quimService.getQuimByID(id).getRequestMission(), HttpStatus.OK);
     }
 
 
