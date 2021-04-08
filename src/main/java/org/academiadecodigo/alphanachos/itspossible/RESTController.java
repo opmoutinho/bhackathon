@@ -93,7 +93,7 @@ public class RESTController {
     }
 
     @RequestMapping(value = "api/customer")
-    public ResponseEntity<QuimDto> list(){
+    public ResponseEntity<List<QuimDto>> list(){
 
         return new ResponseEntity<>(quimToDto.convert(quimService.getQuimByID(2)), HttpStatus.OK);
     }

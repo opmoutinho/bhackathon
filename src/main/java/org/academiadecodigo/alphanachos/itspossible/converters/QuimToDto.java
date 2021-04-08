@@ -56,7 +56,10 @@ public class QuimToDto {
     }
 
     public List<QuimDto> convertList(List<Quim> quins) {
-        return quins.stream().map(this::convert).collect(Collectors.toList());
+        return quins.stream().map((elem) -> {
+            System.out.println(convert(elem));
+            return convert(elem);
+        }).collect(Collectors.toList());
 
     }
 
