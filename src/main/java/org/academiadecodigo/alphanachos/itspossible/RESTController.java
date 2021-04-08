@@ -9,7 +9,6 @@ import org.academiadecodigo.alphanachos.itspossible.persistence.model.Location;
 import org.academiadecodigo.alphanachos.itspossible.persistence.model.Mission;
 import org.academiadecodigo.alphanachos.itspossible.persistence.model.Quim;
 import org.academiadecodigo.alphanachos.itspossible.persistence.model.Skill;
-import org.academiadecodigo.alphanachos.itspossible.services.QuimService;
 import org.academiadecodigo.alphanachos.itspossible.services.QuimServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

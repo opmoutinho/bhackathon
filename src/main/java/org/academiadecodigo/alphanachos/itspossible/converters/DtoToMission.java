@@ -3,6 +3,7 @@ package org.academiadecodigo.alphanachos.itspossible.converters;
 import org.academiadecodigo.alphanachos.itspossible.command.MissionDto;
 import org.academiadecodigo.alphanachos.itspossible.persistence.model.Mission;
 import org.academiadecodigo.alphanachos.itspossible.services.QuimService;
+import org.academiadecodigo.alphanachos.itspossible.services.QuimServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -11,10 +12,10 @@ import java.util.Date;
 @Component
 public class DtoToMission {
 
-    private QuimService quimService;
+    private QuimServiceInterface quimService;
 
     @Autowired
-    public void setQuimService(QuimService quimService) {
+    public void setQuimService(QuimServiceInterface quimService) {
         this.quimService = quimService;
     }
 
