@@ -37,12 +37,12 @@ public class Quim {
     }
 
     public void executeMission(){
-        if (missionToExecute == null) {
+        if (missionRequest == null) {
             return;
         }
-        missionToExecute.setStatus(MissionStatus.COMPLETED);
-        missionToExecute.getOwner().completeMissionRequest();
-        missionToExecute = null;
+        missionRequest.setStatus(MissionStatus.COMPLETED);
+        missionRequest.getHelper().completeMissionRequest();
+        missionRequest = null;
     }
 
 
@@ -67,9 +67,9 @@ public class Quim {
 
 
     public void completeMissionRequest() {
-        if (missionRequest == null)
+        if (missionToExecute == null)
             return;
-        missionRequest = null;
+        missionToExecute = null;
     }
 
 
