@@ -121,7 +121,7 @@ public class RESTController {
         System.out.println(dtoToQuim.hashCode());
         System.out.println(dto.hashCode());
         dto.setId(id);
-        if(dto.getId() != id){
+        if(!dto.getId().equals(id)){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         quimService.saveOrUpdate(dtoToQuim.convert(dto));
