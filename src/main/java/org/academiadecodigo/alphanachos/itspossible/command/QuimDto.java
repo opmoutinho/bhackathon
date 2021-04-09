@@ -11,11 +11,21 @@ public class QuimDto {
     private String email;
     private String phone;
     private String name;
+
+    public Integer getPoints() {
+        return points;
+    }
+
+    public void setPoints(Integer points) {
+        this.points = points;
+    }
+
     private String aboutMe;
     private Location location;
     private Set<Skill> skills;
     private Integer missionToExecuteId;
     private Integer missionRequestId;
+    private Integer points;
 
     public Integer getId() {
         return id;
