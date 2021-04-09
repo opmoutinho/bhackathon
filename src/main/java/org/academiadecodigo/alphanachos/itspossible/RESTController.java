@@ -109,7 +109,7 @@ public class RESTController {
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "api/quim")
-    public ResponseEntity<QuimDto> createQuim(QuimDto quimDto){
+    public ResponseEntity<QuimDto> createQuim(@RequestBody QuimDto quimDto){
         quimService.saveOrUpdate(dtoToQuim.convert(quimDto));
         return new ResponseEntity<>(HttpStatus.OK);
     }
