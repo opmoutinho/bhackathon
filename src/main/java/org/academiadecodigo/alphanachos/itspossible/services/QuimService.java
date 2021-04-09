@@ -127,4 +127,9 @@ public class QuimService implements QuimServiceInterface{
         Quim quim = quimDao.getById(id);
         return quim.getRequestMission();
     }
+
+    @Override
+    public Mission missionToRequest(Integer id) {
+        return missionDao.getById(id);
+    }
 }

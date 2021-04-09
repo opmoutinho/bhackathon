@@ -7,8 +7,8 @@ import org.academiadecodigo.alphanachos.itspossible.persistence.model.Skill;
 public class MissionDto {
 
     private Integer id;
-    private QuimDto owner;
-    private QuimDto helper;
+    private Integer ownerId;
+    private Integer helperId;
     private String description;
     private MissionStatus status;
     private Skill skill;
@@ -22,20 +22,20 @@ public class MissionDto {
         this.id = id;
     }
 
-    public QuimDto getOwner() {
-        return owner;
+    public Integer getOwner() {
+        return ownerId;
     }
 
-    public void setOwner(QuimDto owner) {
-        this.owner = owner;
+    public void setOwner(Integer owner) {
+        this.ownerId = owner;
     }
 
-    public QuimDto getHelper() {
-        return helper;
+    public Integer getHelper() {
+        return helperId;
     }
 
-    public void setHelper(QuimDto helper) {
-        this.helper = helper;
+    public void setHelper(Integer helper) {
+        this.helperId = helper;
     }
 
     public String getDescription() {

@@ -27,8 +27,8 @@ public class MissionToDto {
         missionDto.setStatus(mission.getStatus());
         missionDto.setSkill(mission.getSkill());
         missionDto.setLocation(mission.getLocation());
-        missionDto.setOwner(quimToDto.convertSimple(mission.getOwner()));
-        missionDto.setHelper(mission.getHelper() != null ? quimToDto.convertSimple(mission.getHelper()) : null);
+        missionDto.setOwner(mission.getOwner() != null ? mission.getOwner().getId() : null);
+        missionDto.setHelper(mission.getHelper() != null ? mission.getHelper().getId() : null);
 
         return missionDto;
     }
@@ -47,7 +47,10 @@ public class MissionToDto {
 
     public List<MissionDto> convertList(List<Mission> missions) {
 
-        return missions.stream().map(this::convert).collect(Collectors.toList());
+        return missions.stream().map((elem) -> {
+            System.out.println(convert(elem));
+            return convert(elem);
+        }).collect(Collectors.toList());
 
     }
 

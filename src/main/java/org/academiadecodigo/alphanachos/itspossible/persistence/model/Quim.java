@@ -14,8 +14,9 @@ public class Quim {
     private String email;
     private String phone;
     private String name;
+    private Integer points;
 
-    @Column(length = 50 0)
+    @Column(length = 500)
     private String aboutMe;
 
 
@@ -148,4 +149,11 @@ public class Quim {
         this.missionRequest = missionRequest;
     }
 
+    public Integer getPoints() {
+        return points;
+    }
+
+    public void setPoints(Integer points) {
+        this.points = points;
+    }
 }

@@ -92,30 +92,49 @@ public class RESTController {
         return new ResponseEntity<>(HttpStatus.ACCEPTED);
     }
 
-    @RequestMapping(value = "api/customer")
+    @RequestMapping(value = "api/quim")
     public ResponseEntity<List<QuimDto>> list(){
 
         return new ResponseEntity<>(quimToDto.convertList(quimService.list()), HttpStatus.OK);
     }
 
-    @RequestMapping(method = RequestMethod.POST, value = "api/customer/{id}")
+    @RequestMapping(method = RequestMethod.POST, value = "api/quim/{id}")
     public ResponseEntity<?> createRequest(@PathVariable Integer id, MissionDto mission){
         quimService.createMission(dtoToMission.convert(mission), id);
-        return new ResponseEntity<>(missionToDto.convert(quimService.getQuimByID(id).getRequestMission()), HttpStatus.ACCEPTED);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @RequestMapping(value = "api/customer/{id}")
+    @RequestMapping(value = "api/quim/{id}")
     public ResponseEntity<QuimDto> getCustomer(@PathVariable Integer id){
 
         return new ResponseEntity<>(quimToDto.convert(quimService.getQuimByID(id)), HttpStatus.OK);
     }
 
-    @RequestMapping(value = "api/customer/{id}/executeMission")
-    public String executeMission (@PathVariable Integer id){
+    @RequestMapping(method = RequestMethod.POST, value = "api/quim/{id}/executeMission")
+    public ResponseEntity<?> executeMission (@PathVariable Integer id){
         quimService.getQuimByID(id).executeMission();
-
-        return "redirect:api/customer/" + id;
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    @RequestMapping(method = RequestMethod.PUT, value = "api/quim/{id}")
+    public ResponseEntity<?> editQuim(@PathVariable Integer id, QuimDto dto){
+        dto.setId(id);
+        quimService.saveOrUpdate(dtoToQuim.convert(dto));
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "api/missions/")
+    public ResponseEntity<List<MissionDto>> getMissions(){
+        List<MissionDto>activeMissions = missionToDto.convertList(quimService.listActiveMissions());
+
+        return new ResponseEntity<>(activeMissions, HttpStatus.OK);
+    }
+
+    @RequestMapping(method = RequestMethod.POST, value = "api/quim/{id}/requestmission")
+    public ResponseEntity<?> requestMission(Integer qid, Integer mid) {
+       quimService.requestMission(qid, mid);
+
+       return new ResponseEntity<>(HttpStatus.OK);
+    }
 
 }
