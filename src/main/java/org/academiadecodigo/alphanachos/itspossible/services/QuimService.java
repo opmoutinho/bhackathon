@@ -133,9 +133,10 @@ public class QuimService implements QuimServiceInterface{
         return missionDao.getById(id);
     }
 
-    @Transactional
+    @Transactional(readOnly = true)
     @Override
     public Quim getQuimByMission(Integer id){
+        missionDao.getById(id).hashCode();
         return missionDao.getById(id).getOwner();
     };
 }
