@@ -121,11 +121,14 @@ public class RESTController {
         System.out.println(dtoToQuim.hashCode());
         System.out.println(dto.hashCode());
         dto.setId(id);
+        if(dto.getId() != id){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
         quimService.saveOrUpdate(dtoToQuim.convert(dto));
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "api/missions/")
+    @RequestMapping(method = RequestMethod.GET, value = {"api/missions/","api/missions"})
     public ResponseEntity<List<MissionDto>> getMissions(){
         List<MissionDto>activeMissions = missionToDto.convertList(quimService.listActiveMissions());
 
