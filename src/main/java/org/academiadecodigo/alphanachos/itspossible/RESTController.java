@@ -81,6 +81,40 @@ public class RESTController {
         quim2.setLocation(Location.LISBON);
         quim2.setName("RUI");
 
+        Quim quim3 = new Quim();
+        quim3.setName("Eduard");
+        quim3.setAboutMe("Very special boy");
+        quim3.setLocation(Location.LISBON);
+        quim3.setEmail("smellycat@hotmail.com");
+        quim3.setPhone("9144778556");
+
+        Quim quim4 = new Quim();
+        quim3.setName("Maria Grande");
+        quim3.setAboutMe("I've spare time you help others");
+        quim3.setLocation(Location.LISBON);
+        quim3.setEmail("mariaaiaiaimaria@gmail.com");
+        quim3.setPhone("9144778556");
+
+        Quim quim5= new Quim();
+        quim5.setAboutMe("Alejandro Alejandro, Fernando");
+        quim5.setEmail("AlejandroFernando@hotmail.com");
+        quim5.setPhone("9133114453");
+        quim5.setLocation(Location.FARO);
+        quim5.setName("Alejandro");
+
+        Quim quim6= new Quim();
+        quim6.setAboutMe("R2D2 in Spanish");
+        quim6.setEmail("bigboo@hotmail.com");
+        quim6.setPhone("913737373737");
+        quim6.setLocation(Location.OPORTO);
+        quim6.setName("Arturito");
+
+        Quim quim7= new Quim();
+        quim7.setAboutMe("AHHHHHHHHHHHHHHHHHHHH! That's me screaming for help");
+        quim7.setEmail("Manuela@hotmail.com");
+        quim7.setPhone("2145788992");
+        quim7.setLocation(Location.OPORTO);
+        quim7.setName("Manuela");
 
         Mission mission = new Mission();
         Mission mission1 = new Mission();
