@@ -116,24 +116,27 @@ public class QuimService implements QuimServiceInterface{
         return quimDao.saveOrUpdate(toSave);
     }
 
+    @Transactional(readOnly = true)
     @Override
     public Mission getQuimCurrentMission(Integer id) {
         Quim quim = quimDao.getById(id);
         return quim.getCurrentMission();
     }
 
+    @Transactional(readOnly = true)
     @Override
     public Mission getQuimRequestMission(Integer id) {
         Quim quim = quimDao.getById(id);
         return quim.getRequestMission();
     }
 
+    @Transactional(readOnly = true)
     @Override
     public Mission missionToRequest(Integer id) {
         return missionDao.getById(id);
     }
 
-    @Transactional
+    @Transactional(readOnly = true)
     @Override
     public Quim getQuimByMission(Integer id){
         id.intValue();
