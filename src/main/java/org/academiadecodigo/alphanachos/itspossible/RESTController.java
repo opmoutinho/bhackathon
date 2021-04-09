@@ -86,13 +86,11 @@ public class RESTController {
         mission.setDescription("Help me dumb");
         mission.setSkill(Skill.ERRANDS);
         mission.setDate(new Date());
-        mission.setOwner(quim1);
         quim1.createRequestMission(mission);
         mission1.setLocation(Location.LISBON);
         mission1.setDescription("Please Help is needed");
         mission1.setSkill(Skill.CARE);
         mission1.setDate(new Date());
-        mission1.setOwner(quim2);
         quim2.createRequestMission(mission1);
 
         quimService.saveOrUpdate(quim);
