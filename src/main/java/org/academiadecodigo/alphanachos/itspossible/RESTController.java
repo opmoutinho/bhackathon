@@ -118,6 +118,8 @@ public class RESTController {
 
     @RequestMapping(method = RequestMethod.PUT, value = "api/quim/{id}")
     public ResponseEntity<?> editQuim(@PathVariable Integer id, @RequestBody QuimDto dto){
+        dto.hashCode();
+        dtoToQuim.hashCode();
         dto.setId(id);
         quimService.saveOrUpdate(dtoToQuim.convert(dto));
         return new ResponseEntity<>(HttpStatus.OK);
