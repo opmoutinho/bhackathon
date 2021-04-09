@@ -3,6 +3,7 @@ package org.academiadecodigo.alphanachos.itspossible.persistence.model;
 import org.academiadecodigo.alphanachos.itspossible.exception.AlreadyHasMissionException;
 import org.academiadecodigo.alphanachos.itspossible.exception.NoMissionToExecuteException;
 import javax.persistence.*;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 @Entity
@@ -61,7 +62,7 @@ public class Quim {
         mission.setStatus(MissionStatus.OPEN);
         mission.setLocation(location);
         mission.setOwner(this);
-        mission.setDate(new Date());
+        mission.setDate(new SimpleDateFormat("yyyy-mm-dd hh:mm:ss").format(new Date()));
     }
 
 

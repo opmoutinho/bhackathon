@@ -21,7 +21,7 @@ public class Mission {
     @Enumerated(EnumType.STRING)
     private Skill skill;
     private Location location;
-    private Date date;
+    private String date;
 
 
     public void setOwner(Quim quim) {
@@ -76,11 +76,11 @@ public class Mission {
         return id;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 }

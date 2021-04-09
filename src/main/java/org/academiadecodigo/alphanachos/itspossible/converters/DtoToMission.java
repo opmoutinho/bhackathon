@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Service
@@ -31,7 +32,7 @@ public class DtoToMission {
         mission.setStatus(missionDto.getStatus());
         mission.setSkill(missionDto.getSkill());
         mission.setLocation(missionDto.getLocation());
-        mission.setDate(new Date());
+        mission.setDate(new SimpleDateFormat("yyyy-mm-dd hh:mm:ss").format(new Date()));
 
         return mission;
 

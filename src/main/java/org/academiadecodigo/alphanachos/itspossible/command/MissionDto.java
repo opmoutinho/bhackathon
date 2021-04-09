@@ -15,7 +15,7 @@ public class MissionDto {
     private MissionStatus status;
     private Skill skill;
     private Location location;
-    private Date date;
+    private String date;
 
     public Integer getId() {
         return id;
@@ -73,11 +73,11 @@ public class MissionDto {
         this.location = location;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 }

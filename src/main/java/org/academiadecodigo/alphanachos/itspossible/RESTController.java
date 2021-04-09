@@ -16,6 +16,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
@@ -85,12 +86,12 @@ public class RESTController {
         mission.setLocation(Location.OPORTO);
         mission.setDescription("Help me dumb");
         mission.setSkill(Skill.ERRANDS);
-        mission.setDate(new Date());
+        mission.setDate(new SimpleDateFormat("yyyy-mm-dd hh:mm:ss").format(new Date()));
         quim1.createRequestMission(mission);
         mission1.setLocation(Location.LISBON);
         mission1.setDescription("Please Help is needed");
         mission1.setSkill(Skill.CARE);
-        mission1.setDate(new Date());
+        mission1.setDate(new SimpleDateFormat("yyyy-mm-dd hh:mm:ss").format(new Date()));
         quim2.createRequestMission(mission1);
 
         quimService.saveOrUpdate(quim);
