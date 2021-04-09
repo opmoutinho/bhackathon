@@ -123,7 +123,7 @@ public class RESTController {
 
     @RequestMapping(method = RequestMethod.POST, value = "api/quim/{id}")
     public ResponseEntity<?> createRequest(@PathVariable Integer id, @RequestBody MissionDto mission){
-        if(quimService.getQuimByID(id).getRequestMission() == null)
+        if(quimService.getQuimByID(id).getRequestMission() != null)
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         quimService.createMission(dtoToMission.convert(mission), id);
         return new ResponseEntity<>(HttpStatus.OK);
