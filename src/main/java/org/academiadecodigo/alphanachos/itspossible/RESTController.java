@@ -108,11 +108,11 @@ public class RESTController {
         return new ResponseEntity<>(quimToDto.convertList(quimService.list()), HttpStatus.OK);
     }
 
-    /*@RequestMapping(method = RequestMethod.POST, value ="api/quim")
-    public ResponseEntity<Quim>(@RequestBody QuimDto quimDto){
-            quimService
-            quimService.saveOrUpdate()
-    }*/
+    @RequestMapping(method = RequestMethod.POST, value = "api/quim")
+    public ResponseEntity<QuimDto> createQuim(QuimDto quimDto){
+        quimService.saveOrUpdate(dtoToQuim.convert(quimDto));
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 
     @RequestMapping(method = RequestMethod.GET, value ="api/skills")
     public ResponseEntity<?> listSkills(){
