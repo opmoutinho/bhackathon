@@ -134,9 +134,8 @@ public class QuimService implements QuimServiceInterface{
     @Transactional
     @Override
     public List<Quim> saveOrUpdate(List<Quim> toSave) {
-        return toSave.stream().map((elem) -> {
-            quimDao.saveOrUpdate(elem);
-        }).collect(Collectors.toList());
+        return toSave.stream().map((elem) -> quimDao.saveOrUpdate(elem))
+        .collect(Collectors.toList());
     }
 
     @Transactional(readOnly = true)
