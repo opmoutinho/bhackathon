@@ -118,6 +118,8 @@ public class RESTController {
 
     @RequestMapping(method = RequestMethod.PUT, value = "api/quim/{id}")
     public ResponseEntity<?> editQuim(@PathVariable Integer id, QuimDto dto){
+        System.out.println(dtoToQuim.hashCode());
+        System.out.println(dto.hashCode());
         dto.setId(id);
         quimService.saveOrUpdate(dtoToQuim.convert(dto));
         return new ResponseEntity<>(HttpStatus.OK);
@@ -132,7 +134,7 @@ public class RESTController {
 
     @RequestMapping(method = RequestMethod.POST, value = "api/quim/{id}/requestmission")
     public ResponseEntity<?> requestMission(Integer qid, Integer mid) {
-       quimService.requestMission(qid, mid);
+        quimService.requestMission(qid, mid);
 
        return new ResponseEntity<>(HttpStatus.OK);
     }
