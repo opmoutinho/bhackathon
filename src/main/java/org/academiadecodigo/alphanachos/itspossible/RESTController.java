@@ -155,7 +155,7 @@ public class RESTController {
         quimService.saveOrUpdate(quim);
         quimService.saveOrUpdate(quim2);
         quimService.saveOrUpdate(quim1);
-        quimService.saveOrUpdate(quim3);
+        //quimService.saveOrUpdate(quim3);
         quimService.saveOrUpdate(quim4);
         quimService.saveOrUpdate(quim6);
 
