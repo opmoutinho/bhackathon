@@ -41,9 +41,8 @@ public class Quim {
             return;
         }
         missionRequest.setStatus(MissionStatus.COMPLETED);
-        if(missionRequest.getHelper() == null)
-            return;
-        missionRequest.getHelper().completeMissionRequest();
+        if(missionRequest.getHelper() != null)
+            missionRequest.getHelper().completeMissionRequest();
         missionRequest = null;
     }
 
