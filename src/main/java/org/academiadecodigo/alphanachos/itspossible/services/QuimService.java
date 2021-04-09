@@ -60,7 +60,7 @@ public class QuimService implements QuimServiceInterface{
                 throw new UnsupportedOperationException();
             }
 
-            quim.setMissionRequest(mission);
+            quim.setMissionToExecute(mission);
             mission.setHelper(quim);
             quimDao.saveOrUpdate(quim);
             missionDao.saveOrUpdate(mission);
