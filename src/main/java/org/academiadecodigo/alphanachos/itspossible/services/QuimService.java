@@ -139,7 +139,8 @@ public class QuimService implements QuimServiceInterface{
     @Transactional(readOnly = true)
     @Override
     public Quim getQuimByMission(Integer id){
-        id.intValue();
-        return missionDao.getById(id).getOwner();
+        Mission mission = missionDao.getById(id);
+        System.out.println(mission.getOwner());
+        return mission.getOwner();
     };
 }
