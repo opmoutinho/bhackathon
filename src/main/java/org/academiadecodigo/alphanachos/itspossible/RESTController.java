@@ -161,4 +161,10 @@ public class RESTController {
        return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    @RequestMapping(method = RequestMethod.GET, value = "api/mission/{id}/quim")
+    public ResponseEntity<Quim> getQuimFromMission(@PathVariable Integer id){
+
+        return new ResponseEntity<>(quimService.getQuimByMission(id), HttpStatus.OK);
+    }
+
 }
