@@ -17,9 +17,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.text.SimpleDateFormat;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @RestController
@@ -61,17 +59,21 @@ public class RESTController {
     @RequestMapping(value = {"/",""})
     public ResponseEntity<?> populate() {
         Quim quim = new Quim();
-        quim.setName("QuimZé");
-        quim.setAboutMe("Whatever, i said whatevs");
-        quim.setLocation(Location.FARO);
-        quim.setEmail("abc.abc");
-        quim.setPhone("909090");
+        quim.setEmail("paulo@mail.com");
+        quim.setPhone("903094887");
+        quim.setName("João");
+        quim.setAboutMe("Strong, confident, a winner!");
+        quim.addSkill(Skill.HANDYMAN);
+        quim.setLocation(Location.LISBON);
+
         Quim quim1 = new Quim();
         quim1.setAboutMe("QuimBé");
-        quim1.setEmail("lolol.lolol");
+        quim1.setEmail("KinsRule");
         quim1.setPhone("9090110");
         quim1.setLocation(Location.OPORTO);
         quim1.setName("Pablo");
+        quim1.addSkill(Skill.TECHNOLOGY);
+
         Quim quim2 = new Quim();
         quim2.setAboutMe("Strange Man");
         quim2.setEmail("meman.merman");
