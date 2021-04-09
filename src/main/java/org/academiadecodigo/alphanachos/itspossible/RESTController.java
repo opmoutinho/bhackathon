@@ -104,5 +104,9 @@ public class RESTController {
         return new ResponseEntity<>(missionToDto.convert(quimService.getQuimByID(id).getRequestMission()), HttpStatus.ACCEPTED);
     }
 
+    @RequestMapping(value = "api/customer/{id}")
+    public ResponseEntity<QuimDto> getCustomer(@PathVariable Integer id){
 
+        return new ResponseEntity<>(quimToDto.convert(quimService.getQuimByID(id)), HttpStatus.OK);
+    }
 }
