@@ -4,6 +4,8 @@ import org.academiadecodigo.alphanachos.itspossible.persistence.model.Location;
 import org.academiadecodigo.alphanachos.itspossible.persistence.model.MissionStatus;
 import org.academiadecodigo.alphanachos.itspossible.persistence.model.Skill;
 
+import java.util.Date;
+
 public class MissionDto {
 
     private Integer id;
@@ -13,6 +15,7 @@ public class MissionDto {
     private MissionStatus status;
     private Skill skill;
     private Location location;
+    private Date date;
 
     public Integer getId() {
         return id;
@@ -68,5 +71,13 @@ public class MissionDto {
 
     public void setLocation(Location location) {
         this.location = location;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public Date getDate() {
+        return date;
     }
 }

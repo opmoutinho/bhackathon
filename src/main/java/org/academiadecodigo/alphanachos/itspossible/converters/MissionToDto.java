@@ -4,11 +4,12 @@ import org.academiadecodigo.alphanachos.itspossible.command.MissionDto;
 import org.academiadecodigo.alphanachos.itspossible.persistence.model.Mission;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Component
+@Service
 public class MissionToDto {
 
     public QuimToDto quimToDto;
@@ -27,6 +28,7 @@ public class MissionToDto {
         missionDto.setStatus(mission.getStatus());
         missionDto.setSkill(mission.getSkill());
         missionDto.setLocation(mission.getLocation());
+        missionDto.setDate(mission.getDate());
         missionDto.setOwner(mission.getOwner() != null ? mission.getOwner().getId() : null);
         missionDto.setHelper(mission.getHelper() != null ? mission.getHelper().getId() : null);
 

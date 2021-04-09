@@ -6,10 +6,11 @@ import org.academiadecodigo.alphanachos.itspossible.services.QuimService;
 import org.academiadecodigo.alphanachos.itspossible.services.QuimServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.Date;
 
-@Component
+@Service
 public class DtoToMission {
 
     private QuimServiceInterface quimService;

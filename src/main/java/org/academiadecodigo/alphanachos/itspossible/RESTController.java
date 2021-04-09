@@ -16,7 +16,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @CrossOrigin(origins = "*", maxAge = 3600)
@@ -57,19 +60,19 @@ public class RESTController {
     @RequestMapping(value = {"/",""})
     public ResponseEntity<?> populate() {
         Quim quim = new Quim();
-        quim.setName("Me");
-        quim.setAboutMe("Whatever");
+        quim.setName("QuimZé");
+        quim.setAboutMe("Whatever, i said whatevs");
         quim.setLocation(Location.FARO);
         quim.setEmail("abc.abc");
         quim.setPhone("909090");
         Quim quim1 = new Quim();
-        quim1.setAboutMe("LLALALALA");
+        quim1.setAboutMe("QuimBé");
         quim1.setEmail("lolol.lolol");
         quim1.setPhone("9090110");
         quim1.setLocation(Location.OPORTO);
         quim1.setName("Pablo");
         Quim quim2 = new Quim();
-        quim2.setAboutMe("Strange");
+        quim2.setAboutMe("Strange Man");
         quim2.setEmail("meman.merman");
         quim2.setPhone("9133113");
         quim2.setLocation(Location.LISBON);
@@ -80,10 +83,17 @@ public class RESTController {
         Mission mission1 = new Mission();
         Mission mission2 = new Mission();
         mission.setLocation(Location.OPORTO);
-        mission.setOwner(quim1);
         mission.setDescription("Help me dumb");
         mission.setSkill(Skill.ERRANDS);
+        mission.setDate(new Date());
+        mission.setOwner(quim1);
         quim1.createRequestMission(mission);
+        mission1.setLocation(Location.LISBON);
+        mission1.setDescription("Please Help is needed");
+        mission1.setSkill(Skill.CARE);
+        mission1.setDate(new Date());
+        mission1.setOwner(quim2);
+        quim2.createRequestMission(mission1);
 
         quimService.saveOrUpdate(quim);
         quimService.saveOrUpdate(quim2);
@@ -96,6 +106,18 @@ public class RESTController {
     public ResponseEntity<List<QuimDto>> list(){
 
         return new ResponseEntity<>(quimToDto.convertList(quimService.list()), HttpStatus.OK);
+    }
+
+    /*@RequestMapping(method = RequestMethod.POST, value ="api/quim")
+    public ResponseEntity<Quim>(@RequestBody QuimDto quimDto){
+            quimService
+            quimService.saveOrUpdate()
+    }*/
+
+    @RequestMapping(method = RequestMethod.GET, value ="api/skills")
+    public ResponseEntity<?> listSkills(){
+        List<Skill> skillist = Arrays.stream(Skill.values()).collect(Collectors.toList());
+        return new ResponseEntity<>(skillist, HttpStatus.OK);
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "api/quim/{id}")
