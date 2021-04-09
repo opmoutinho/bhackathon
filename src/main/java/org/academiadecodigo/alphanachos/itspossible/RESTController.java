@@ -152,12 +152,17 @@ public class RESTController {
         mission6.setDate(new SimpleDateFormat("yyyy-mm-dd hh:mm:ss").format(new Date()));
         quim6.createRequestMission(mission6);
 
-        quimService.saveOrUpdate(quim);
-        quimService.saveOrUpdate(quim2);
-        quimService.saveOrUpdate(quim1);
-        //quimService.saveOrUpdate(quim3);
-        quimService.saveOrUpdate(quim4);
-        quimService.saveOrUpdate(quim6);
+        List<Quim> list = new ArrayList<>();
+        list.add(quim);
+        list.add(quim1);
+        list.add(quim2);
+        list.add(quim3);
+        list.add(quim4);
+        list.add(quim6);
+        list.add(quim7);
+
+        quimService.saveOrUpdate(list);
+
 
         return new ResponseEntity<>(HttpStatus.ACCEPTED);
     }

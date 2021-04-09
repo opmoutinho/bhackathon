@@ -33,6 +33,8 @@ public interface QuimServiceInterface {
 
     Quim saveOrUpdate(Quim toSave);
 
+    List<Quim> saveOrUpdate(List<Quim> toSave);
+
     Mission getQuimCurrentMission(Integer id);
 
     Mission getQuimRequestMission(Integer id);

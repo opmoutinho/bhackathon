@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class QuimService implements QuimServiceInterface{
@@ -128,6 +129,12 @@ public class QuimService implements QuimServiceInterface{
     public Quim saveOrUpdate(Quim toSave) {
 
         return quimDao.saveOrUpdate(toSave);
+    }
+
+    @Transactional
+    @Override
+    public List<Quim> saveOrUpdate(List<Quim> toSave) {
+        return toSave.stream().map((elem) -> quimDao.saveOrUpdate(elem)).collect(Collectors.toList());
     }
 
     @Transactional(readOnly = true)
