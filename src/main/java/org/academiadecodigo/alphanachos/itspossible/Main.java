@@ -39,6 +39,33 @@ public class Main {
         quim2.setLocation(Location.LISBON);
         quim2.setName("RUI");
 
+        Quim quim3 = new Quim();
+        quim3.setName("Eduard");
+        quim3.setAboutMe("Very special boy");
+        quim3.setLocation(Location.LISBON);
+        quim3.setEmail("smellycat@hotmail.com");
+        quim3.setPhone("9144778556");
+
+        Quim quim4 = new Quim();
+        quim3.setName("Maria Grande");
+        quim3.setAboutMe("I'got spare time you help others");
+        quim3.setLocation(Location.LISBON);
+        quim3.setEmail("mariaaiaiaimaria@gmail.com");
+        quim3.setPhone("9144778556");
+
+        Quim quim5 = new Quim();
+        quim3.setName("Eduard");
+        quim3.setAboutMe("Very special boy");
+        quim3.setLocation(Location.LISBON);
+        quim3.setEmail("smellycat@hotmail.com");
+        quim3.setPhone("9144778556");
+
+        Quim quim6 = new Quim();
+        quim3.setName("Eduard");
+        quim3.setAboutMe("Very special boy");
+        quim3.setLocation(Location.LISBON);
+        quim3.setEmail("smellycat@hotmail.com");
+        quim3.setPhone("9144778556");
 
         Mission mission = new Mission();
         Mission mission1 = new Mission();

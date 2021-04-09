@@ -16,10 +16,17 @@ public class Quim {
     private String phone;
     private String name;
     private Integer points;
-
+    private Integer count;
     @Column(length = 500)
     private String aboutMe;
 
+    public Integer getCount() {
+        return count;
+    }
+
+    public void setCount(Integer count) {
+        this.count = count;
+    }
 
     @ElementCollection(targetClass = Skill.class, fetch = FetchType.EAGER)
     @Enumerated(EnumType.STRING)
@@ -34,6 +41,8 @@ public class Quim {
     private Mission missionRequest;
     public Quim() {
         skills = new LinkedHashSet<>();
+        count = 0;
+        points = 0;
     }
 
     public void executeMission(){

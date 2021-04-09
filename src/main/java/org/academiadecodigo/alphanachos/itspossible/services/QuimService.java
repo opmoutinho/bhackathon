@@ -77,6 +77,20 @@ public class QuimService implements QuimServiceInterface{
         quimDao.saveOrUpdate(quim);
     }
 
+    @Override
+    public void executeMission(Integer id, Integer rating) {
+        Quim quim = quimDao.getById(id);
+        if (quim == null){
+            throw new UnsupportedOperationException();
+        }
+        Mission mission = quim.getRequestMission();
+        Quim helper = mission.getHelper();
+        helper.setPoints(((helper.getPoints()*helper.getCount())+rating)/ (helper.getCount()+1));
+        helper.setCount(helper.getCount()+1);
+        quim.executeMission();
+        quimDao.saveOrUpdate(quim);
+    }
+
     @Transactional(readOnly = true)
     @Override
     public List<Mission> listActiveMissions() {

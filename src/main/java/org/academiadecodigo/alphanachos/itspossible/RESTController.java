@@ -135,9 +135,12 @@ public class RESTController {
         return new ResponseEntity<>(quimToDto.convert(quimService.getQuimByID(id)), HttpStatus.OK);
     }
 
-    @RequestMapping(method = RequestMethod.POST, value = "api/quim/{id}/executeMission")
-    public ResponseEntity<?> executeMission (@PathVariable Integer id){
-        quimService.executeMission(id);
+    @RequestMapping(method = RequestMethod.POST, value = "api/quim/{id}/executeMission/{rating}")
+    public ResponseEntity<?> executeMission (@PathVariable Integer id, @PathVariable Integer rating){
+        if(rating == -1)
+            quimService.executeMission(id);
+        else
+            quimService.executeMission(id, rating);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
@@ -157,7 +160,7 @@ public class RESTController {
 
     @RequestMapping(method = RequestMethod.POST, value = "api/quim/{qid}/requestmission/{mid}")
     public ResponseEntity<?> requestMission(@PathVariable Integer qid, @PathVariable Integer mid) {
-        quimService.requestMission(qid, mid);
+        quimService.requestMission(mid, qid);
 
        return new ResponseEntity<>(HttpStatus.OK);
     }

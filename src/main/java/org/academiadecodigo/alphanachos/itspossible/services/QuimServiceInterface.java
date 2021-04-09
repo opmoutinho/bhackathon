@@ -17,6 +17,8 @@ public interface QuimServiceInterface {
 
     void executeMission (Integer id);
 
+    void executeMission (Integer id, Integer rating);
+
    List<Mission> listActiveMissions();
 
    List<Mission> listQuimHelpedMissions(Integer id);
