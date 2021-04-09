@@ -130,9 +130,38 @@ public class RESTController {
         mission1.setDate(new SimpleDateFormat("yyyy-mm-dd hh:mm:ss").format(new Date()));
         quim2.createRequestMission(mission1);
 
+        Mission mission3 = new Mission ();
+        mission3.setLocation(Location.LISBON);
+        mission3.setDescription("I need help to format my laptop");
+        mission3.setSkill(Skill.TECHNOLOGY);
+        mission3.setDate(new SimpleDateFormat("yyyy-mm-dd hh:mm:ss").format(new Date()));
+        quim3.setMissionRequest(mission3);
+        Mission mission4 = new Mission ();
+        mission4.setLocation(Location.LISBON);
+        mission4.setDescription("I need someone to take care of my granmother for 1 hour");
+        mission4.setSkill(Skill.CARE);
+        mission4.setDate(new SimpleDateFormat("yyyy-mm-dd hh:mm:ss").format(new Date()));
+        quim4.setMissionRequest(mission4);
+        Mission mission5 = new Mission ();
+        mission5.setLocation(Location.FARO);
+        mission5.setDescription("I really really need help from someone, I'm in quarantine and I need to buy food!!");
+        mission5.setSkill(Skill.TRANSPORT);
+        mission5.setDate(new SimpleDateFormat("yyyy-mm-dd hh:mm:ss").format(new Date()));
+        quim5.setMissionRequest(mission5);
+        Mission mission6 = new Mission ();
+        mission6.setLocation(Location.OPORTO);
+        mission6.setDescription("HELPPPPPPP!");
+        mission6.setSkill(Skill.PLUMBING);
+        mission6.setDate(new SimpleDateFormat("yyyy-mm-dd hh:mm:ss").format(new Date()));
+        quim6.setMissionRequest(mission6);
+
         quimService.saveOrUpdate(quim);
         quimService.saveOrUpdate(quim2);
         quimService.saveOrUpdate(quim1);
+        quimService.saveOrUpdate(quim3);
+        quimService.saveOrUpdate(quim4);
+        quimService.saveOrUpdate(quim5);
+        quimService.saveOrUpdate(quim6);
 
         return new ResponseEntity<>(HttpStatus.ACCEPTED);
     }
