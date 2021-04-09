@@ -88,15 +88,12 @@ public class RESTController {
         quim3.setEmail("smellycat@hotmail.com");
         quim3.setPhone("9144778556");
 
-        if(quim3.getName() == null)
-            throw new RuntimeException();
-
         Quim quim4 = new Quim();
-        quim3.setName("Maria Grande");
-        quim3.setAboutMe("I've spare time you help others");
-        quim3.setLocation(Location.LISBON);
-        quim3.setEmail("mariaaiaiaimaria@gmail.com");
-        quim3.setPhone("9144778556");
+        quim4.setName("Maria Grande");
+        quim4.setAboutMe("I've spare time you help others");
+        quim4.setLocation(Location.LISBON);
+        quim4.setEmail("mariaaiaiaimaria@gmail.com");
+        quim4.setPhone("9144778556");
 
         Quim quim6= new Quim();
         quim6.setAboutMe("R2D2 in Spanish");
