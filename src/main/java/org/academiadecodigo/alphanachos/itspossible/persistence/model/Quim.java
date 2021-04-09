@@ -15,7 +15,7 @@ public class Quim {
     private String phone;
     private String name;
 
-    @Column(length = 500)
+    @Column(length = 50 0)
     private String aboutMe;
 
 

@@ -109,4 +109,13 @@ public class RESTController {
 
         return new ResponseEntity<>(quimToDto.convert(quimService.getQuimByID(id)), HttpStatus.OK);
     }
+
+    @RequestMapping(value = "api/customer/{id}/executeMission")
+    public String executeMission (@PathVariable Integer id){
+        quimService.getQuimByID(id).executeMission();
+
+        return "redirect:api/customer/" + id;
+    }
+
+
 }
