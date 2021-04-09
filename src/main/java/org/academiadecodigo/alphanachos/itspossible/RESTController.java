@@ -159,12 +159,19 @@ public class RESTController {
        return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "api/mission/{id}/quim")
+    @RequestMapping(method = RequestMethod.GET, value = "api/missions/{id}/quim")
     public ResponseEntity<QuimDto> getQuimFromMission(@PathVariable Integer id){
 
         QuimDto quimDto = quimToDto.convert(quimService.getQuimByMission(id));
 
         return new ResponseEntity<>(quimDto, HttpStatus.OK);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "api/missions/{id}")
+    public ResponseEntity<MissionDto> getMission(@PathVariable Integer id){
+        MissionDto missionDto = missionToDto.convert(quimService.getMissionById(id));
+
+        return new ResponseEntity<>(missionDto, HttpStatus.OK);
     }
 
 }

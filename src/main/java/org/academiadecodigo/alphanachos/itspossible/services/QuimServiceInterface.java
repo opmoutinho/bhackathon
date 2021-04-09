@@ -37,6 +37,8 @@ public interface QuimServiceInterface {
 
     Mission missionToRequest (Integer id);
 
-    public Quim getQuimByMission(Integer id);
+    Quim getQuimByMission(Integer id);
+
+    Mission getMissionById(Integer id);
 
 }
