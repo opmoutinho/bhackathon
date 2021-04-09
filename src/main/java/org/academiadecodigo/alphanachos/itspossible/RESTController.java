@@ -153,8 +153,8 @@ public class RESTController {
         return new ResponseEntity<>(activeMissions, HttpStatus.OK);
     }
 
-    @RequestMapping(method = RequestMethod.POST, value = "api/quim/{id}/requestmission")
-    public ResponseEntity<?> requestMission(Integer qid, Integer mid) {
+    @RequestMapping(method = RequestMethod.POST, value = "api/quim/{qid}/requestmission/{mid}")
+    public ResponseEntity<?> requestMission(@PathVariable Integer qid, @PathVariable Integer mid) {
         quimService.requestMission(qid, mid);
 
        return new ResponseEntity<>(HttpStatus.OK);
