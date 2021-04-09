@@ -18,6 +18,7 @@ public class Mission {
 
     private String description;
     private MissionStatus status;
+    @Enumerated(EnumType.STRING)
     private Skill skill;
     private Location location;
     private Date date;

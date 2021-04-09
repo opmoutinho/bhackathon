@@ -92,7 +92,7 @@ public class RESTController {
         return new ResponseEntity<>(HttpStatus.ACCEPTED);
     }
 
-    @RequestMapping(value = "api/quim")
+    @RequestMapping(method = RequestMethod.GET, value = "api/quim")
     public ResponseEntity<List<QuimDto>> list(){
 
         return new ResponseEntity<>(quimToDto.convertList(quimService.list()), HttpStatus.OK);
@@ -104,7 +104,7 @@ public class RESTController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @RequestMapping(value = "api/quim/{id}")
+    @RequestMapping(method = RequestMethod.GET, value = "api/quim/{id}")
     public ResponseEntity<QuimDto> getCustomer(@PathVariable Integer id){
 
         return new ResponseEntity<>(quimToDto.convert(quimService.getQuimByID(id)), HttpStatus.OK);
@@ -118,12 +118,7 @@ public class RESTController {
 
     @RequestMapping(method = RequestMethod.PUT, value = "api/quim/{id}")
     public ResponseEntity<?> editQuim(@PathVariable Integer id, @RequestBody QuimDto dto){
-        System.out.println(dtoToQuim.hashCode());
-        System.out.println(dto.hashCode());
         dto.setId(id);
-        if(!dto.getId().equals(id)){
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
         quimService.saveOrUpdate(dtoToQuim.convert(dto));
         return new ResponseEntity<>(HttpStatus.OK);
     }
