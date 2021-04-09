@@ -95,13 +95,6 @@ public class RESTController {
         quim3.setEmail("mariaaiaiaimaria@gmail.com");
         quim3.setPhone("9144778556");
 
-        Quim quim5= new Quim();
-        quim5.setAboutMe("Alejandro Alejandro, Fernando");
-        quim5.setEmail("AlejandroFernando@hotmail.com");
-        quim5.setPhone("9133114453");
-        quim5.setLocation(Location.FARO);
-        quim5.setName("Alejandro");
-
         Quim quim6= new Quim();
         quim6.setAboutMe("R2D2 in Spanish");
         quim6.setEmail("bigboo@hotmail.com");
@@ -118,12 +111,13 @@ public class RESTController {
 
         Mission mission = new Mission();
         Mission mission1 = new Mission();
-        Mission mission2 = new Mission();
+
         mission.setLocation(Location.OPORTO);
         mission.setDescription("Help me dumb");
         mission.setSkill(Skill.ERRANDS);
         mission.setDate(new SimpleDateFormat("yyyy-mm-dd hh:mm:ss").format(new Date()));
         quim1.createRequestMission(mission);
+
         mission1.setLocation(Location.LISBON);
         mission1.setDescription("Please Help is needed");
         mission1.setSkill(Skill.CARE);
@@ -136,18 +130,21 @@ public class RESTController {
         mission3.setSkill(Skill.TECHNOLOGY);
         mission3.setDate(new SimpleDateFormat("yyyy-mm-dd hh:mm:ss").format(new Date()));
         quim3.createRequestMission(mission3);
+
         Mission mission4 = new Mission ();
         mission4.setLocation(Location.LISBON);
-        mission4.setDescription("I need someone to take care of my granmother for 1 hour");
+        mission4.setDescription("I need someone to take care of my grandmother for 1 hour");
         mission4.setSkill(Skill.CARE);
         mission4.setDate(new SimpleDateFormat("yyyy-mm-dd hh:mm:ss").format(new Date()));
         quim4.createRequestMission(mission4);
+
         Mission mission5 = new Mission ();
         mission5.setLocation(Location.FARO);
         mission5.setDescription("I really really need help from someone, I'm in quarantine and I need to buy food!!");
         mission5.setSkill(Skill.TRANSPORT);
         mission5.setDate(new SimpleDateFormat("yyyy-mm-dd hh:mm:ss").format(new Date()));
-        quim5.createRequestMission(mission5);
+        quim1.createRequestMission(mission5);
+
         Mission mission6 = new Mission ();
         mission6.setLocation(Location.OPORTO);
         mission6.setDescription("HELPPPPPPP!");
@@ -160,7 +157,6 @@ public class RESTController {
         quimService.saveOrUpdate(quim1);
         quimService.saveOrUpdate(quim3);
         quimService.saveOrUpdate(quim4);
-        quimService.saveOrUpdate(quim5);
         quimService.saveOrUpdate(quim6);
 
         return new ResponseEntity<>(HttpStatus.ACCEPTED);
