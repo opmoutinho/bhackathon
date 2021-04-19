@@ -23,8 +23,6 @@ public class DtoToQuim {
         Quim quim = quimDto.getId() != null ?
                         quimService.getQuimByID(quimDto.getId()) :
                         new Quim();
-        if(quimDto.getEmail() == null)
-            return null;
         quim.setEmail(quimDto.getEmail());
         quim.setAboutMe(quimDto.getAboutMe());
         quim.setPhone(quimDto.getPhone());

@@ -32,7 +32,7 @@ public class DtoToMission {
         mission.setStatus(missionDto.getStatus());
         mission.setSkill(missionDto.getSkill());
         mission.setLocation(missionDto.getLocation());
-        mission.setDate(new SimpleDateFormat("yyyy-mm-dd hh:mm:ss").format(new Date()));
+        mission.setDate(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(new Date()));
 
         return mission;
 
