@@ -60,10 +60,10 @@ public class RESTController {
     public ResponseEntity<?> populate() {
 
         // Empty DB before repopulate
-        List<Quim> allQuinsInDB = quimService.list();
+        /*List<Quim> allQuinsInDB = quimService.list();
         for (Quim quim : allQuinsInDB) {
             quimService.deleteById(quim.getId());
-        }
+        }*/
         
         Quim quim = new Quim();
         quim.setName("João");
@@ -214,7 +214,7 @@ public class RESTController {
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "api/quim/{id}/executeMission/{rating}")
-    public ResponseEntity<?> executeMission (@PathVariable Integer id, @PathVariable Integer rating){
+    public ResponseEntity<?> executeMission(@PathVariable Integer id, @PathVariable Integer rating){
 
         if (rating == -1) {
             quimService.executeMission(id);

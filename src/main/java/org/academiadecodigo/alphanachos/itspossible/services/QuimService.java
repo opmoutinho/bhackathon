@@ -40,54 +40,63 @@ public class QuimService implements QuimServiceInterface{
     @Transactional
     @Override
     public void createMission(Mission mission, Integer id) {
-            Quim quim = quimDao.getById(id);
-            if (quim == null){
-                throw new UnsupportedOperationException();
-            }
-            quim.createRequestMission(mission);
-            quimDao.saveOrUpdate(quim);
+
+        Quim quim = quimDao.getById(id);
+        if (quim == null){
+            throw new UnsupportedOperationException();
+        }
+
+        quim.createRequestMission(mission);
+        quimDao.saveOrUpdate(quim);
     }
 
     @Transactional
     @Override
     public void requestMission(Integer mid, Integer qid) {
-            Quim quim = quimDao.getById(qid);
-            if(quim == null){
-                throw new UnsupportedOperationException();
-            }
 
-            Mission mission = missionDao.getById(mid);
-            if(mission == null){
-                throw new UnsupportedOperationException();
-            }
+        Quim quim = quimDao.getById(qid);
+        if (quim == null){
+            throw new UnsupportedOperationException();
+        }
 
-            quim.setMissionToExecute(mission);
-            mission.setHelper(quim);
-            quimDao.saveOrUpdate(quim);
-            missionDao.saveOrUpdate(mission);
+        Mission mission = missionDao.getById(mid);
+        if (mission == null){
+            throw new UnsupportedOperationException();
+        }
+
+        quim.setMissionToExecute(mission);
+        mission.setHelper(quim);
+        quimDao.saveOrUpdate(quim);
+        missionDao.saveOrUpdate(mission);
     }
 
     @Transactional
     @Override
     public void executeMission(Integer id) {
+
         Quim quim = quimDao.getById(id);
+
         if (quim == null){
             throw new UnsupportedOperationException();
         }
+
         quim.executeMission();
         quimDao.saveOrUpdate(quim);
     }
 
     @Override
     public void executeMission(Integer id, Integer rating) {
+
         Quim quim = quimDao.getById(id);
+
         if (quim == null){
             throw new UnsupportedOperationException();
         }
+
         Mission mission = quim.getRequestMission();
         Quim helper = mission.getHelper();
-        helper.setPoints(((helper.getPoints()*helper.getCount())+rating)/ (helper.getCount()+1));
-        helper.setCount(helper.getCount()+1);
+        helper.setPoints(((helper.getPoints() * helper.getCount()) + rating) / (helper.getCount() + 1));
+        helper.setCount(helper.getCount() + 1);
         quim.executeMission();
         quimDao.saveOrUpdate(quim);
     }
@@ -116,23 +125,27 @@ public class QuimService implements QuimServiceInterface{
     @Transactional(readOnly = true)
     @Override
     public List<Mission> listActiveMissionsByLocation(Location location) {
+
         return missionDao.listAllActiveMissionsByLocation(location);
     }
 
     @Transactional(readOnly = true)
     public Quim getQuimByID (Integer id){
+
         return quimDao.getById(id);
     }
 
     @Transactional
     @Override
     public Quim saveOrUpdate(Quim toSave) {
+
         return quimDao.saveOrUpdate(toSave);
     }
 
     @Transactional
     @Override
     public List<Quim> saveOrUpdate(List<Quim> toSave) {
+
         return toSave.stream().map((elem) -> quimDao.saveOrUpdate(elem))
                         .collect(Collectors.toList());
     }
@@ -140,42 +153,52 @@ public class QuimService implements QuimServiceInterface{
     @Transactional(readOnly = true)
     @Override
     public Mission getQuimCurrentMission(Integer id) {
+
         Quim quim = quimDao.getById(id);
+
         return quim.getCurrentMission();
     }
 
     @Transactional(readOnly = true)
     @Override
     public Mission getQuimRequestMission(Integer id) {
+
         Quim quim = quimDao.getById(id);
+
         return quim.getRequestMission();
     }
 
     @Transactional(readOnly = true)
     @Override
     public Mission missionToRequest(Integer id) {
+
         return missionDao.getById(id);
     }
 
     @Transactional(readOnly = true)
     @Override
     public Quim getQuimByMission(Integer id){
+
         Mission mission = missionDao.getById(id);
         System.out.println(mission.getOwner());
+
         return mission.getOwner();
     };
 
     @Transactional
     @Override
     public Mission getMissionById(Integer id){
+
         Mission mission = missionDao.getById(id);
         System.out.println(missionDao.getById(id));
+
         return mission;
     }
 
     @Transactional
     @Override
     public void deleteById(Integer id){
+
         quimDao.delete(id);
     }
 }

@@ -43,12 +43,13 @@ public class Quim {
         points = 0;
     }
 
+
     public void executeMission(){
         if (missionRequest == null) {
             return;
         }
         missionRequest.setStatus(MissionStatus.COMPLETED);
-        if(missionRequest.getHelper() != null)
+        if (missionRequest.getHelper() != null)
             missionRequest.getHelper().completeMissionRequest();
         missionRequest = null;
     }
@@ -62,6 +63,7 @@ public class Quim {
         missionToExecute.setHelper(this);
         missionToExecute.setStatus(MissionStatus.IN_PROGRESS);
     }
+
 
     public void createRequestMission(Mission mission){
         if (missionRequest != null)
