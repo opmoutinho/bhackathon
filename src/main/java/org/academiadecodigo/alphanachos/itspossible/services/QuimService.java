@@ -127,7 +127,6 @@ public class QuimService implements QuimServiceInterface{
     @Transactional
     @Override
     public Quim saveOrUpdate(Quim toSave) {
-
         return quimDao.saveOrUpdate(toSave);
     }
 
@@ -135,7 +134,7 @@ public class QuimService implements QuimServiceInterface{
     @Override
     public List<Quim> saveOrUpdate(List<Quim> toSave) {
         return toSave.stream().map((elem) -> quimDao.saveOrUpdate(elem))
-        .collect(Collectors.toList());
+                        .collect(Collectors.toList());
     }
 
     @Transactional(readOnly = true)
@@ -172,5 +171,11 @@ public class QuimService implements QuimServiceInterface{
         Mission mission = missionDao.getById(id);
         System.out.println(missionDao.getById(id));
         return mission;
+    }
+
+    @Transactional
+    @Override
+    public void deleteById(Integer id){
+        quimDao.delete(id);
     }
 }
