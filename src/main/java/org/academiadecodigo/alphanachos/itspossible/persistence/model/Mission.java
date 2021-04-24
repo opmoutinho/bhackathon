@@ -1,7 +1,6 @@
 package org.academiadecodigo.alphanachos.itspossible.persistence.model;
 
 import javax.persistence.*;
-import java.util.Date;
 
 @Entity
 public class Mission {
